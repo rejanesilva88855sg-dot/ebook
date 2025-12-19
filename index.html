@@ -16,7 +16,7 @@
             --bg-page: #ffffff;
             --header-bg: #ffffff;
             --sidebar-bg: #f9f9f9;
-            --page-speed: 1s;
+            --page-speed: 0.8s;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +30,7 @@
             flex-direction: column;
         }
 
-        /* Header Hotmart */
+        /* Header */
         header {
             width: 100%;
             height: 70px;
@@ -40,11 +40,10 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
+            z-index: 2000;
         }
         header img { height: 35px; object-fit: contain; }
 
-        /* Main Container */
         .main-container {
             display: flex;
             flex: 1;
@@ -57,9 +56,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 3500px;
+            perspective: 4000px;
             padding: 2rem;
-            background: radial-gradient(circle at center, #fdfdfd 0%, #f0f0f0 100%);
+            background: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%);
         }
 
         .book {
@@ -72,7 +71,7 @@
 
         /* Sidebar Reviews */
         .sidebar-reviews {
-            width: 450px;
+            width: 420px;
             background: var(--sidebar-bg);
             border-left: 1px solid #ddd;
             overflow-y: auto;
@@ -90,9 +89,9 @@
             background: var(--sidebar-bg);
             z-index: 10;
         }
+
         .stars-display { color: #ffa41c; font-size: 1.1rem; }
 
-        /* Review Interaction */
         .comment-form {
             background: #fff;
             padding: 1rem;
@@ -117,7 +116,7 @@
         .comment-date { font-size: 0.75rem; color: #565959; }
         .comment-text { font-size: 0.85rem; line-height: 1.4; color: #333; margin-top: 5px; }
 
-        /* Book Pages */
+        /* Pages */
         .page {
             position: absolute;
             width: 100%; height: 100%; top: 0; left: 0;
@@ -134,38 +133,40 @@
             display: flex; flex-direction: column; overflow-y: auto;
         }
         .front { box-shadow: inset 25px 0 60px rgba(0,0,0,0.05); z-index: 2; }
-        .back { transform: rotateY(180deg); background: #fcfcfc; box-shadow: inset -25px 0 60px rgba(0,0,0,0.05); }
-        .page.flipped { transform: rotateY(-180deg); z-index: 2; }
+        .back { transform: rotateY(180deg); background: #fdfdfd; box-shadow: inset -25px 0 60px rgba(0,0,0,0.05); }
+        .page.flipped { transform: rotateY(-180deg); }
 
-        /* Typography */
-        .cover-black {
-            background: #000 !important;
-            color: var(--gold-color) !important;
-            justify-content: center !important;
-            border-left: 15px solid #111;
-        }
-        #p1 .front.cover-black {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://t.ctcdn.com.br/go3h_KQdrNgdx0uOeuAkmfUUZZI=/1200x675/smart/i368810.jpeg') !important;
+        /* Capa Personalizada */
+        #p1 .front {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/4nMGGPhr/HJHJ.png') !important;
             background-size: cover !important;
             background-position: center !important;
+            border-left: 15px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center !important;
+            align-items: center;
+            color: #fff !important;
         }
-        .cover-black h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; text-align: center; font-weight: 900; }
+
+        .cover-text h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; text-align: center; font-weight: 900; color: var(--gold-color); text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         
         .step-header { font-family: 'Cinzel', serif; color: var(--accent-color); font-size: 0.9rem; letter-spacing: 6px; text-align: center; margin-bottom: 1.5rem; font-weight: 700; }
         .main-title { font-family: 'Cinzel', serif; color: #000; font-size: 1.5rem; text-align: center; margin-bottom: 2rem; border-bottom: 2px solid #000; padding-bottom: 1rem; font-weight: 900; }
         
-        /* Font Size Increased to 1.3rem as requested */
-        .content-body { font-family: 'Lora', serif; font-size: 1.3rem; line-height: 1.9; color: #000; text-align: justify; }
-        .content-body strong { color: var(--accent-color); }
+        /* Texto INTEGRAL e GRANDE */
+        .content-body { font-family: 'Lora', serif; font-size: 1.3rem; line-height: 1.8; color: #000; text-align: justify; }
+        .content-body strong { color: var(--accent-color); font-weight: 700; }
 
-        .book-nav { position: absolute; bottom: 15px; display: flex; gap: 10px; z-index: 100; }
-        .nav-btn { background: #000; color: #fff; border: 1px solid var(--gold-color); padding: 10px 25px; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 0.8rem; }
+        .book-nav { position: absolute; bottom: 20px; display: flex; gap: 10px; z-index: 3000; }
+        .nav-btn { background: #000; color: #fff; border: 1px solid var(--gold-color); padding: 12px 30px; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 0.8rem; }
         .nav-btn:hover:not(:disabled) { background: var(--gold-color); color: #000; }
         .nav-btn:disabled { opacity: 0.1; cursor: not-allowed; }
 
-        /* Internal Scrollbar */
         .page-side::-webkit-scrollbar { width: 4px; }
-        .page-side::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
+        .page-side::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+
+        @media (max-width: 1000px) { .sidebar-reviews { display: none; } }
     </style>
 </head>
 <body>
@@ -175,24 +176,25 @@
     </header>
 
     <div class="main-container">
-        
         <main class="book-area">
             <div class="book" id="book">
                 
                 <!-- FOLHA 1 -->
                 <div class="page" id="p1">
-                    <div class="page-side front cover-black">
-                        <span style="font-size: 3rem;">✠</span>
-                        <h1>As Consequências e Reviravoltas de um Golpe!</h1>
-                        <div style="height: 2px; width: 60%; background: var(--gold-color); margin: 2rem auto;"></div>
-                        <p style="font-family: 'Cinzel'; letter-spacing: 5px;">MANUAL DE SEGURANÇA</p>
+                    <div class="page-side front">
+                        <div class="cover-text">
+                            <span style="font-size: 3rem; display: block; text-align: center; color: var(--gold-color);">✠</span>
+                            <h1>As Consequências e Reviravoltas de um Golpe!</h1>
+                            <div style="height: 2px; width: 60%; background: var(--gold-color); margin: 2rem auto;"></div>
+                            <p style="font-family: 'Cinzel'; letter-spacing: 4px; font-size: 0.8rem; text-align: center;">O DOSSIÊ FINAL</p>
+                        </div>
                     </div>
                     <div class="page-side back">
-                        <span class="step-header">Prólogo</span>
-                        <h2 class="main-title">A Revanche Estratégica</h2>
+                        <span class="step-header">Início</span>
+                        <h2 class="main-title">Manual de Revanche</h2>
                         <div class="content-body">
                             <strong>Manual de como se vingar de uma golpista(a):</strong><br><br>
-                            Este guia apresenta um método psicológico e prático para lidar com criminosos que abusam da confiança alheia. O objetivo é a reparação do dano emocional e a justiça.
+                            Este manual foi criado para expor a realidade crua daqueles que manipulam a confiança alheia. A vingança aqui não é apenas um ato, mas uma estratégia de reparação psicológica.
                         </div>
                     </div>
                 </div>
@@ -201,9 +203,10 @@
                 <div class="page" id="p2">
                     <div class="page-side front">
                         <span class="step-header">Passo 1</span>
-                        <h2 class="main-title">A Isenção do Controle</h2>
+                        <h2 class="main-title">O Controle Ilusório</h2>
                         <div class="content-body">
-                            Primeiro, deixe ela achar que está no controle da vida dela. Faça a golpista(a) achar que os crimes que ela cometeu ficaram impunes e que nada vai acontecer nem com ela nem com a família dela, que foi cúmplice dos golpes dela.
+                            Passo 1, primeiro deixe ela achar que está no controle da vida dela.<br><br>
+                            Faça a golpista(a) achar que os crimes que ela cometeu ficaram impunes e que nada vai acontecer nem com ela nem com a família dela, que foi cúmplice dos golpes dela.
                         </div>
                     </div>
                     <div class="page-side back">
@@ -222,7 +225,7 @@
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Deixe a golpista(a) seguir a vida dela curtindo, fazendo planos, rindo, e no final você, que foi prejudicado(a) por ela, vem com tudo de uma vez só, fazendo um grande estrago que ela não vai ter nem como consertar.
+                            Deixe a golpista(a) seguir a vida dela curtindo, fazendo planos, rindo, e no final você, que foi prejudicado(a) por ela, vem com tudo e de uma vez só, fazendo um grande estrago que ela não vai ter nem como consertar.
                         </div>
                     </div>
                 </div>
@@ -231,9 +234,9 @@
                 <div class="page" id="p4">
                     <div class="page-side front">
                         <span class="step-header">Passo 2</span>
-                        <h2 class="main-title">A Visibilidade Fatal</h2>
+                        <h2 class="main-title">A Exposição Global</h2>
                         <div class="content-body">
-                            <strong>Como se vingar de uma golpista(a):</strong><br><br>
+                            Passo 2: Como se vingar de uma golpista(a)<br><br>
                             Faça a golpista(a) ser vista por todos ao seu redor, chame a atenção de todos ao redor da golpista(a), menos a atenção dela, deixe todos de olho nela, mas não deixe ela saber.
                         </div>
                     </div>
@@ -248,14 +251,15 @@
                 <div class="page" id="p5">
                     <div class="page-side front">
                         <span class="step-header">Passo 3</span>
-                        <h2 class="main-title">O Abalo dos Psicopatas</h2>
+                        <h2 class="main-title">Abalando Psicopatas</h2>
                         <div class="content-body">
-                            Geralmente, psicopatas não têm sentimentos e só se importam com eles mesmos e, às vezes, com a família. Muitos deles nem se importam com a família. Existem muitos psicopatas que fazem coisas erradas e, quando a família é atacada, eles simplesmente ignoram.
+                            Passo 3: Como abalar os psicopatas que se aproveitam dos outros<br><br>
+                            Geralmente, psicopatas não têm sentimentos e só se importam com eles mesmos e, às vezes, com a família. Muitos deles nem se importam com a família.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            ...e deixam suas famílias arcarem com as consequências de seus erros. Então, não há muito o que fazer para abalar um(a) psicopata(a). O que pode ser feito é colocar esse(a) psicopata(a) nos holofotes, chamar a atenção de amigos(as) e parentes.
+                            Existem muitos psicopatas que fazem coisas erradas e, quando a família é atacada, eles simplesmente ignoram e deixam suas famílias arcarem com as consequências de seus erros. Então, não há muito o que fazer para abalar um(a) psicopata(a).
                         </div>
                     </div>
                 </div>
@@ -264,12 +268,12 @@
                 <div class="page" id="p6">
                     <div class="page-side front">
                         <div class="content-body">
-                            Alerte que o(a) psicopata(a) não é uma vítima, e sim uma pessoa doente que manipula, engana, finge chorar, brinca com os sentimentos de outras pessoas apenas para o próprio bem e para ter vantagens.
+                            O que pode ser feito é colocar esse(a) psicopata(a) nos holofotes, chamar a atenção de amigos(as), parentes e alertar que o(a) psicopata(a) não é uma vítima, e sim uma pessoa doente que manipula, engana, finge chorar...
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Finge que não fez nada de errado com outras pessoas, finge que é vítima de histórias das quais o(a) psicopata(a) é vilão(ã). A verdade exposta é o único antídoto contra a manipulação dessas figuras.
+                            ...brinca com os sentimentos de outras pessoas apenas para o próprio bem e para ter vantagens. Finge que não fez nada de errado com outras pessoas, finge que é vítima de histórias das quais o(a) psicopata(a) é vilão(ã).
                         </div>
                     </div>
                 </div>
@@ -278,10 +282,10 @@
                 <div class="page" id="p7">
                     <div class="page-side front">
                         <span class="step-header">Passo 4</span>
-                        <h2 class="main-title">O Pensamento do Réu</h2>
+                        <h2 class="main-title">A Mente do Golpista</h2>
                         <div class="content-body">
-                            <strong>O que um(a) golpista(a) pensa?</strong><br><br>
-                            Golpistas não se importam com ninguém, eles roubam pessoas, não pensam nos sentimentos delas de frustração, bloqueiam as pessoas por meio de contatos e redes sociais tentando cortar todos os contatos.
+                            O que um(a) golpista(a) pensa?<br><br>
+                            Golpistas não se importam com ninguém, eles roubam pessoas, não pensam nos sentimentos delas de frustração, bloqueiam as pessoas por meio de contatos, WhatsApp, e-mails, Instagram, redes sociais, tentando cortar todos os contatos com as vítimas.
                         </div>
                     </div>
                     <div class="page-side back">
@@ -295,12 +299,12 @@
                 <div class="page" id="p8">
                     <div class="page-side front">
                         <div class="content-body">
-                            O(a) golpista(a) é sempre o(a) primeiro(a) a esquecer o que fez, mas a vítima não se esquece. A vítima fica calada, a vítima faz planos, a vítima se vinga. E quando a vítima se vinga, o(a) golpista(a) se finge de vítima imediatamente.
+                            O(a) golpista(a) é sempre o(a) primeiro(a) a esquecer o que fez, mas a vítima não se esquece. A vítima fica calada, a vítima faz planos, a vítima se vinga.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Diz que a pessoa que ele(a) roubou é um monstro, apenas porque a pessoa não teve nenhuma outra alternativa que não fosse a vingança. A vítima tenta contato para entender o porquê do golpe, só que o golpista bloqueia a pessoa.
+                            E quando a vítima se vinga de um(a) golpista(a), a primeira coisa que o(a) golpista(a) faz é se fingir de vítima e dizer que a pessoa que ele(a) roubou é um monstro, apenas porque a pessoa não teve nenhuma outra alternativa que não fosse se vingar do(a) golpista(a).
                         </div>
                     </div>
                 </div>
@@ -309,106 +313,246 @@
                 <div class="page" id="p9">
                     <div class="page-side front">
                         <div class="content-body">
-                            Na cabeça da vítima, só resta a vingança. O golpista vê a vingança e começa a mentir para si mesmo, dizendo que a vítima é um monstro ou psicopata, tentando inverter em sua mente que ele é a vítima por estar sofrendo as consequências.
+                            A primeira coisa que a vítima faz é tentar contato com o(a) golpista(a) para entender o porquê do golpe. Milhares de pensamentos surgem na cabeça da vítima quando ela percebe que foi roubada. A vítima tenta contatar o(a) golpista(a), só que o(a) golpista(a), por ser golpista(a), bloqueia a pessoa.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            A vingança alivia a dor de uma pessoa prejudicada. Tira o sentimento de impotência por ter sido roubada, usada e prejudicada pelo tempo perdido enquanto o(a) golpista(a) só visava lucrar. Tudo o que fazemos tem consequências.
+                            Então, na cabeça da vítima, só resta uma única alternativa: a vingança. Aí é que entra o pensamento do(a) golpista(a). O(a) golpista(a) vê a vítima se vingando e começa a mentir para si mesmo(a), dizendo que a vítima é um monstro, um(a) psicopata(a)...
                         </div>
                     </div>
                 </div>
 
-                <!-- FOLHA 10: Passo 5 -->
+                <!-- FOLHA 10: Passo 4 Cont. -->
                 <div class="page" id="p10">
                     <div class="page-side front">
-                        <span class="step-header">Passo 5</span>
-                        <h2 class="main-title">A Tipologia do Golpe</h2>
                         <div class="content-body">
-                            <strong>Golpes de venda de eletrônicos:</strong> vendem e não entregam. Estrago no psicológico da vítima. <br><br>
-                            <strong>Golpe de empréstimo:</strong> solicita dinheiro adiantado e rouba a vítima, ferrando o psicológico para sempre.
+                            ...e tenta inverter em sua mente que agora o(a) golpista(a), por estar recebendo as consequências de seus golpes, se tornou a vítima, e a vítima se tornou um(a) psicopata(a) ou um monstro, apenas por não ter tido outra alternativa que não fosse a vingança.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            <strong>Golpes virtuais:</strong> OLX, Facebook, Mercado Livre, Amazon, onde anunciam e cobram taxas fora da plataforma. <br><br>
-                            <strong>Golpe do amor:</strong> manipulação através de lives, fingindo amar para tirar dinheiro por pena.
+                            A vingança alivia a dor de uma pessoa que foi prejudicada de diversas formas. A vingança tende a tirar um pouco do sentimento de impotência por ter sido roubada, por ter sido usada e prejudicada, pelo tempo perdido enquanto o(a) golpista(a) só visava lucrar.
                         </div>
                     </div>
                 </div>
 
-                <!-- FOLHA 11: Passo 5 Cont. -->
+                <!-- FOLHA 11: Passo 4 Final -->
                 <div class="page" id="p11">
                     <div class="page-side front">
                         <div class="content-body">
-                            Os golpistas fazem planos que nunca iriam acontecer, fazem a vítima perder meses da vida e, de um dia para o outro, tiram a máscara. Ignoram o tempo, a quebra de confiança e o psicológico destruído ao seu bel-prazer.
+                            Mas o(a) golpista(a) esquece que tudo o que fazemos tem consequências e que a vítima nunca vai esquecer que foi roubada e muito menos vai esquecer que a obrigação dela é se vingar do(a) golpista(a) enquanto a dívida entre ambas(os) existir.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Deixam a vítima de lado achando que ficará por isso mesmo. A vítima tenta dar chances, mas os golpistas preferem as consequências. Eles não sabem que as consequências do golpe do amor marcam para sempre, e a vítima se vinga para sempre.
+                            Se o(a) golpista(a) não resolve com a vítima, há casos em que a vítima se vinga para sempre, já que a dívida passa a existir entre ambas(os) para sempre. O tempo apenas reforça a necessidade de reparação.
                         </div>
                     </div>
                 </div>
 
-                <!-- FOLHA 12: Passo 5 Cont. -->
+                <!-- FOLHA 12: Passo 5 -->
                 <div class="page" id="p12">
                     <div class="page-side front">
+                        <span class="step-header">Passo 5</span>
+                        <h2 class="main-title">Arquétipos de Golpes</h2>
                         <div class="content-body">
-                            <strong>Cartão clonado:</strong> motoboys, dados da dark web, fingindo ser funcionários do banco para pegar o cartão e a senha. <br><br>
-                            <strong>Golpes contra idosos:</strong> curso de Cuidador Social para abrir contas e lavagem de dinheiro em nome de vulneráveis.
+                            Passo 5: Tipo de golpes entre golpistas(as) e vítimas, com consequências:<br><br>
+                            <strong>Golpes de venda de eletrônicos:</strong> golpistas(as) vendem eletrônicos e não entregam. Isso gera um estrago no psicológico da vítima ao saber que foi roubada e perdeu seu dinheiro.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Exemplo real: a criminosa apelidada de <strong>Felina</strong>, que já passou por diversos bicos e esquemas ilegais em benefício próprio usando o reconhecimento facial de documentos de idosos para abertura de contas.
+                            Também tem o <strong>golpe de empréstimo</strong>, onde a pessoa solicita dinheiro adiantado e rouba a vítima, ferrando o psicológico da vítima e marcando a vida dela para sempre, dependendo do tipo de prejuízo causado.
                         </div>
                     </div>
                 </div>
 
-                <!-- FOLHA 13: Passo 6 -->
+                <!-- FOLHA 13: Passo 5 Cont. -->
                 <div class="page" id="p13">
                     <div class="page-side front">
-                        <span class="step-header">Passo 6</span>
-                        <h2 class="main-title">A Reação Silenciosa</h2>
                         <div class="content-body">
-                            Vítimas contratam outras pessoas para atacarem golpistas. Entram em grupos de doações para recrutar pessoas que enviam trotes, pedem motoboys, gás e cestas básicas na casa do golpista. A vítima fica imune às consequências.
+                            <strong>Golpes virtuais:</strong> nos golpes virtuais tem o golpe da OLX, Facebook, Mercado Livre, Amazon, onde golpistas(as) anunciam produtos e, depois da venda, cobram taxas fora da plataforma.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Contratam detetives e tiram fotos da casa. Enquanto a vítima tiver o CPF, é impossível se esconder, seja em Fortaleza ou Ubajara. A vítima sabe com quem o golpista mora e onde ele está em tempo real, mesmo calada.
+                            Ainda em golpes virtuais, tem o famoso <strong>golpe do amor</strong>, onde golpistas(as) manipulam as pessoas através de plataformas de lives, dizendo amar as vítimas, fazendo as vítimas darem dinheiro por pena.
                         </div>
                     </div>
                 </div>
 
-                <!-- FOLHA 14: Passo 6 Cont. -->
+                <!-- FOLHA 14: Passo 5 Cont. -->
                 <div class="page" id="p14">
                     <div class="page-side front">
                         <div class="content-body">
-                            A vítima quer que o golpista ache que ela é incapaz, para que ele fique relaxado e sem medo. Quando a vítima estala os dedos, a vida do(a) golpista estará completamente arruinada, e a vítima apenas ficará rindo.
+                            Os(as) golpistas(as) manipulam as vítimas nesses aplicativos de live, usam a vítima, fazem planos que nunca iriam acontecer, fazem a vítima perder meses da vida dela estando ali e, no final, de um dia para o outro, resolvem tirar a máscara achando que não terá consequências.
                         </div>
                     </div>
                     <div class="page-side back">
-                        <span class="step-header">Passo 7</span>
-                        <h2 class="main-title">A Condição do Perdão</h2>
                         <div class="content-body">
-                            Somente quando o(a) golpista tomar vergonha na cara, se arrepender por ter roubado e pedir desculpas. Quando esse dia chegar, a pessoa roubada certamente vai perdoar e ambos seguirão suas vidas.
+                            Os(as) golpistas(as) simplesmente ignoram o tempo que as vítimas perderam, ignoram o que as vítimas deixaram de fazer, ignoram o quanto a pessoa perdeu por estar ali, ignoram a quebra de confiança e o psicológico destruído, enfim, ignoram tudo ao seu bel-prazer...
                         </div>
                     </div>
                 </div>
 
-                <!-- FOLHA 15: Passo 7 Cont. e Final -->
+                <!-- FOLHA 15: Passo 5 Cont. -->
                 <div class="page" id="p15">
                     <div class="page-side front">
                         <div class="content-body">
-                            Enquanto o arrependimento não chega, ele deve colher o que tirou: tempo, dinheiro e dedicação. O golpista acha que roubou só dinheiro, mas roubou a vida. Ele só liga quando a única opção é a vingança. Resolvam antes que seja tarde.
+                            ...e deixam a vítima de lado achando que ficará por isso mesmo, não deixando outra opção para a vítima que não seja o caminho da vingança. A vítima ainda tenta dar mais algumas chances para o(a) golpista(a) se redimir e fazer a coisa certa.
                         </div>
                     </div>
-                    <div class="page-side back cover-black">
-                        <h1>FIM</h1>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            ...mas os(as) golpistas(as) não estão nem aí. Eles(as) preferem as consequências, porque acham que uma hora vão acabar, mas o que eles(as) não sabem é que as consequências do golpe do amor marcam a vítima para sempre, e a vítima se vinga para sempre.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 16: Passo 5 Cont. -->
+                <div class="page" id="p16">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            Também tem o famoso <strong>golpe do cartão clonado</strong>, onde os(as) golpistas(as) mandam motoboys irem ao endereço de pessoas aleatórias, compram dados na dark web e depois se passam por funcionários do banco...
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            ...ligando para as vítimas e dizendo que tentaram usar o saldo das contas bancárias. Quando a vítima acredita, eles(as) mandam motoboys até a casa da vítima para pegar o cartão e usá-lo. Eles(as) têm todo um esquema para convencer a vítima a passar a senha do cartão.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 17: Passo 5 Final -->
+                <div class="page" id="p17">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            Também tem os <strong>golpes contra idosos</strong>, onde os(as) golpistas(as) fazem curso de Cuidador(a) Social Plantonista e oferecem apoio direto e cuidados básicos a pessoas vulneráveis, em regime de escala, atuando em unidades de acolhimento...
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            ...fingindo ser assistência social e mandando pessoas vulneráveis tirarem fotos e fazerem reconhecimento facial para abertura de contas bancárias em nome delas, apenas para lavagem de dinheiro, como no caso da criminosa apelidada de <strong>Felina</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 18: Passo 6 -->
+                <div class="page" id="p18">
+                    <div class="page-side front">
+                        <span class="step-header">Passo 6</span>
+                        <h2 class="main-title">As Táticas de Retorno</h2>
+                        <div class="content-body">
+                            Passo 6: Algumas vinganças que as vítimas fazem<br><br>
+                            Vítimas contratam outras pessoas para atacarem golpistas(as). Vítimas entram em grupos de doações no Facebook, onde encontram pessoas precisando de dinheiro e oferecem dinheiro para fazerem alguns favores.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            ...como enviar trotes a restaurantes e mandar entregar na casa dos(as) golpistas(as), mandando motoboys, gás, doação de cestas básicas, pessoas procurando emprego etc. As vítimas de um(a) golpista(a) nunca sujam suas mãos; elas preferem dar o troco pagando outras pessoas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 19: Passo 6 Cont. -->
+                <div class="page" id="p19">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            ...assim a vítima fica blindada e imune às consequências. A vítima contrata detetive particular, contrata pessoas para tirarem fotos da casa do(a) golpista(a), descobre onde o(a) golpista(a) está em tempo real porque tem o CPF do(a) golpista(a).
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Na cabeça do(a) golpista(a), ele(a) acha que tem como se esconder, mas enquanto a vítima tiver o CPF, é impossível se esconder, não importa a cidade, como Fortaleza, Ubajara etc. Não importa com quem o(a) golpista(a) more.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 20: Passo 6 Final -->
+                <div class="page" id="p20">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            A vítima sempre sabe de tudo, embora não fale nada. A vítima sempre sabe de tudo, até os mínimos detalhes. A vítima fica calada porque quer que o(a) golpista(a) ache que ela é lerda, burra(o) e incapaz, para que o(a) golpista(a) fique relaxado(a).
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            ...se divertindo, sem medo. A vítima se vinga quando quer, sem pressão, sem estresse. Quando a vítima estala os dedos, a vida do(a) golpista(a) estará completamente arruinada, e a vítima apenas ficará rindo e relaxando.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 21: Passo 7 (INTEGRAL) -->
+                <div class="page" id="p21">
+                    <div class="page-side front">
+                        <span class="step-header">Passo 7</span>
+                        <h2 class="main-title">A Condição do Perdão</h2>
+                        <div class="content-body">
+                            Passo 7: Quando perdoar um(a) golpista(a)<br><br>
+                            Somente quando o(a) golpista(a) tomar vergonha na cara, se arrepender por ter roubado e pedir desculpas. Quando esse dia chegar, a pessoa roubada certamente vai perdoar o(a) golpista(a) e ambos(as) seguirão suas vidas.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Enquanto esse dia não chega, o(a) golpista(a) deve continuar colhendo as consequências de tudo o que fez, de tudo o que tirou das vítimas: tempo, dinheiro, dedicação e coisas que a vítima deixou de fazer em sua vida.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 22: Passo 7 Cont. -->
+                <div class="page" id="p22">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            O(a) golpista(a) pensa que roubou apenas dinheiro, mas roubou muito mais: roubou tempo e dedicação. O(a) golpista(a) só liga quando a vítima não tem outra opção que não seja se vingar.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Aprendam com este ebook as consequências que um(a) golpista(a) pode sofrer e o que não deve ser feito com outras pessoas. Nem todo mundo é besta de deixar alguém roubar, rir, manipular, enganar e não fazer nada.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 23: Passo 7 Cont. -->
+                <div class="page" id="p23">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            Pessoas sofrem, pessoas se vingam. O que aprendemos neste ebook é a não ignorar o vínculo entre golpista(a) e vítima e a resolver dívidas antes que seja tarde demais.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Pedir desculpas é importante e libertador. Espero que todos que compraram este ebook tenham aprendido que a vingança alivia, mas também faz querer mais e mais, infinitamente.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 24: Epílogo -->
+                <div class="page" id="p24">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            Se você conhecer um(a) golpista(a), antes dele(a) tirar a máscara e assumir que roubou alguém, avise que isso terá consequências imediatas. A máscara que cai revela uma dívida que nunca dorme.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body" style="text-align: center; padding-top: 5rem;">
+                            <span style="font-size: 3rem; color: var(--gold-color);">✠</span>
+                            <h2 style="font-family: 'Cinzel'; margin-top: 2rem;">FIM DO DOSSIÊ</h2>
+                            <p style="font-family: 'Inter'; font-size: 0.9rem; margin-top: 1rem; color: #666;">JUSTIÇA E REPARAÇÃO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 25: Contra-Capa -->
+                <div class="page" id="p25">
+                    <div class="page-side front" style="background: #000; color: var(--gold-color); justify-content: center; align-items: center;">
+                        <h2 style="font-family: 'Cinzel'; font-size: 2rem;">✠ FIM ✠</h2>
                         <div style="height: 1px; width: 40%; background: var(--gold-color); margin: 2rem auto;"></div>
-                        <p style="font-family: 'Cinzel'; font-size: 0.9rem;">JUSTIÇA ALCANÇADA</p>
+                        <p style="font-size: 0.8rem; letter-spacing: 5px;">EDIDTADO POR MASTER</p>
+                    </div>
+                    <div class="page-side back" style="background: #000;">
+                        <!-- Verso final oculto -->
                     </div>
                 </div>
 
@@ -416,14 +560,13 @@
 
             <div class="book-nav">
                 <button id="prevBtn" class="nav-btn" disabled>ANTERIOR</button>
-                <button id="nextBtn" class="nav-btn">PRÓXIMA PÁGINA</button>
+                <button id="nextBtn" class="nav-btn">PRÓXIMA</button>
             </div>
         </main>
 
-        <!-- Sidebar Reviews -->
         <aside class="sidebar-reviews">
             <div class="reviews-header">
-                <h2>Comentários e Notas</h2>
+                <h2>Avaliações Recentes</h2>
                 <div class="rating-summary">
                     <span class="stars-display">★★★★★</span>
                     <span style="font-weight: 700; color: #111;">4.9 / 5</span>
@@ -437,52 +580,51 @@
                     <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
                 </div>
                 <textarea placeholder="Como este e-book te ajudou?"></textarea>
-                <button>Publicar</button>
+                <button>Publicar Comentário</button>
             </div>
 
             <div id="commentsContainer">
-                <!-- 20 reviews fakes com nomes brasileiros e datas de novembro/2025 -->
                 <script>
-                    const names = ["Ricardo C.", "Ana Maria S.", "Marcos T.", "Juliana M.", "Paulo R.", "Fernanda S.", "Carlos E.", "Beatriz O.", "Gabriel S.", "Luciana C.", "André F.", "Rafael N.", "Simone P.", "Thiago A.", "Vanessa R.", "Felipe D.", "Carina L.", "Rodrigo F.", "Amanda C.", "Bruno S."];
-                    const reviews = [
-                        "O Passo 7 é o mais importante. A gente não recupera o tempo, mas recupera a dignidade.",
-                        "Impressionante como descreve a 'Felina'. Já vi casos assim no interior.",
-                        "A vingança fria ensinada aqui é mil vezes melhor que qualquer briga.",
-                        "Leitura necessária para quem foi enganado no WhatsApp.",
-                        "O CPF é realmente a chave. O golpista não tem pra onde fugir.",
-                        "Entendi finalmente que o golpista se faz de vítima quando a gente revida.",
-                        "Muito bom o passo sobre os psicopatas. Eles não têm alma mesmo.",
-                        "Finalmente consegui dormir em paz após ler este manual.",
-                        "O golpe do amor me quebrou, mas este livro me reconstruiu.",
-                        "Justiça tardia mas certeira. Recomendo a todos.",
-                        "As táticas de pressão psicológica funcionam de verdade.",
-                        "Parar de ser boazinha foi minha melhor decisão.",
-                        "A dívida é eterna se não houver arrependimento.",
-                        "Gostei dos detalhes sobre a Interpol e CIA no Passo 2.",
-                        "O alívio da vingança organizada é indescritível.",
-                        "Achei pesado em algumas partes, mas quem sofreu sabe que é necessário.",
-                        "Dossiê completo. Blindagem mental de alto nível.",
-                        "O golpista esquece, mas a vítima tem memória de elefante.",
-                        "Excelente investimento. Vale cada centavo pela paz de espírito.",
-                        "A máscara cai e a conta chega. Melhor manual da categoria."
+                    const namesArr = ["Ricardo C.", "Ana Maria S.", "Marcos T.", "Juliana M.", "Paulo R.", "Fernanda S.", "Carlos E.", "Beatriz O.", "Gabriel S.", "Luciana C.", "André F.", "Rafael N.", "Simone P.", "Thiago A.", "Vanessa R.", "Felipe D.", "Carina L.", "Rodrigo F.", "Amanda C.", "Bruno S."];
+                    const reviewsArr = [
+                        "O Passo 7 é a alma do livro. Perdoar só com arrependimento real. O golpista precisa sentir a perda!",
+                        "Impactada com a descrição da Felina. É exatamente o que aconteceu na minha cidade.",
+                        "Vingança organizada sem sujar as mãos. O manual é perfeito para quem foi lesado.",
+                        "O golpe do amor quase acabou comigo, mas ler este dossiê me deu forças para agir.",
+                        "O CPF é a chave mestra. O golpista não tem onde se esconder com essas estratégias.",
+                        "Finalmente entendi que o golpista se faz de vítima quando a gente revida. Padrão puro!",
+                        "Psicopatas não têm alma, o livro ensina a colocar luz sobre eles e expor a verdade.",
+                        "Dormi em paz pela primeira vez em meses após aplicar o Passo 2 estrategicamente.",
+                        "O alívio da vingança organizada é indescritível. Valeu cada centavo investido.",
+                        "Dossiê completo. Blindagem mental total para quem trabalha com vendas online.",
+                        "As táticas de pressão psicológica funcionam. Recuperei minha dignidade e meu valor.",
+                        "Parar de ser boazinha com criminoso foi minha melhor decisão. Manual libertador.",
+                        "A dívida é eterna enquanto não houver o pedido de desculpas sincero. Verdade absoluta.",
+                        "Detetive e trotes de cesta básica... genial. O golpista fica sem saída e desesperado.",
+                        "O golpe do cartão clonado é exatamente como descreveram. Muita atenção com motoboys.",
+                        "Achei o conteúdo denso mas extremamente necessário. Quem sofreu golpe entende.",
+                        "A máscara cai e a conta chega. Melhor manual sobre o tema disponível no mercado.",
+                        "O golpista esquece, mas a vítima nunca esquece o rosto. Maior verdade do livro.",
+                        "Excelente investimento. Valeu pela paz de espírito e pela estratégia de retorno.",
+                        "A justiça tarda mas não falha para quem segue este guia estratégico de revanche."
                     ];
 
-                    const container = document.getElementById('commentsContainer');
+                    const sidebar = document.getElementById('commentsContainer');
                     for(let i=0; i<20; i++) {
                         const date = 30 - i;
-                        const stars = i === 2 || i === 6 ? "★★★★☆" : "★★★★★";
-                        const html = `
+                        const starHtml = i === 2 || i === 6 ? "★★★★☆" : "★★★★★";
+                        const item = `
                             <div class="comment-item" style="margin-top:10px">
                                 <div class="user-info">
-                                    <div class="user-avatar" style="background:hsl(${i*18}, 70%, 50%)">${names[i].substring(0,1)}</div>
-                                    <span class="user-name">${names[i]}</span>
+                                    <div class="user-avatar" style="background:hsl(${i*18}, 70%, 50%)">${namesArr[i].substring(0,1)}</div>
+                                    <span class="user-name">${namesArr[i]}</span>
                                 </div>
-                                <span class="stars-display">${stars}</span>
+                                <span class="stars-display">${starHtml}</span>
                                 <div class="comment-date">${date} de novembro de 2025</div>
-                                <p class="comment-text">${reviews[i]}</p>
+                                <p class="comment-text">${reviewsArr[i]}</p>
                             </div>
                         `;
-                        container.innerHTML += html;
+                        sidebar.innerHTML += item;
                     }
                 </script>
             </div>
@@ -494,7 +636,7 @@
         const nextBtn = document.querySelector("#nextBtn");
         const book = document.querySelector("#book");
         const pages = [];
-        const totalSheets = 15;
+        const totalSheets = 25; 
 
         for(let i=1; i<=totalSheets; i++) {
             pages.push(document.querySelector("#p"+i));
@@ -514,6 +656,26 @@
             });
         });
 
+        // Dynamic Z-Index Manager
+        function updateZIndex() {
+            pages.forEach((page, index) => {
+                const pageNum = index + 1;
+                if (pageNum < currentLocation) {
+                    // Páginas já viradas (stack de baixo)
+                    page.style.zIndex = pageNum;
+                } else if (pageNum === currentLocation) {
+                    // Página atual (no topo)
+                    page.style.zIndex = totalSheets + 1;
+                } else {
+                    // Páginas futuras (stack de cima, ordem inversa)
+                    page.style.zIndex = totalSheets - pageNum;
+                }
+            });
+        }
+
+        // Initialize Z-Index
+        updateZIndex();
+
         function openBook() {
             book.style.transform = "translateX(50%)";
             prevBtn.disabled = false;
@@ -527,13 +689,15 @@
             if(currentLocation < maxLocation) {
                 if(currentLocation === 1) openBook();
                 const page = pages[currentLocation - 1];
+                if(!page) return;
                 page.classList.add("flipped");
-                page.style.zIndex = currentLocation;
+                
                 if(currentLocation === totalSheets) {
                     closeBook(false);
                     nextBtn.disabled = true;
                 }
                 currentLocation++;
+                updateZIndex();
             }
         }
 
@@ -549,8 +713,9 @@
                 }
                 currentLocation--;
                 const page = pages[currentLocation - 1];
+                if(!page) return;
                 page.classList.remove("flipped");
-                page.style.zIndex = (totalSheets + 1) - currentLocation;
+                updateZIndex();
             }
         }
 
@@ -558,6 +723,7 @@
         prevBtn.addEventListener("click", goPrev);
 
         pages.forEach((page, index) => {
+            if(!page) return;
             page.addEventListener("click", () => {
                 if(page.classList.contains("flipped")) {
                     if(currentLocation - 1 === index + 1) goPrev();
