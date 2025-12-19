@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Lora:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --book-height: 80vh;
-            --book-width: 55vh;
+            --book-height: 85vh;
+            --book-width: 60vh;
             --paper-color: #ffffff;
             --text-color: #000000;
             --accent-color: #cc0000; 
@@ -16,14 +16,10 @@
             --bg-page: #ffffff;
             --header-bg: #ffffff;
             --sidebar-bg: #f9f9f9;
-            --page-speed: 1.2s;
+            --page-speed: 1s;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-page);
@@ -34,6 +30,7 @@
             flex-direction: column;
         }
 
+        /* Header Hotmart */
         header {
             width: 100%;
             height: 70px;
@@ -43,14 +40,11 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 100;
+            z-index: 1000;
         }
+        header img { height: 35px; object-fit: contain; }
 
-        header img {
-            height: 35px;
-            object-fit: contain;
-        }
-
+        /* Main Container */
         .main-container {
             display: flex;
             flex: 1;
@@ -63,7 +57,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 3000px;
+            perspective: 3500px;
             padding: 2rem;
             background: radial-gradient(circle at center, #fdfdfd 0%, #f0f0f0 100%);
         }
@@ -74,9 +68,9 @@
             height: var(--book-height);
             transition: transform 0.6s ease;
             transform-style: preserve-3d;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
 
+        /* Sidebar Reviews */
         .sidebar-reviews {
             width: 450px;
             background: var(--sidebar-bg);
@@ -85,7 +79,7 @@
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .reviews-header {
@@ -96,194 +90,82 @@
             background: var(--sidebar-bg);
             z-index: 10;
         }
-
-        .reviews-header h2 {
-            font-size: 1.3rem;
-            color: #111;
-            margin-bottom: 0.5rem;
-        }
-
-        .rating-summary {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.5rem;
-        }
-
         .stars-display { color: #ffa41c; font-size: 1.1rem; }
-        .count { color: #565959; font-size: 0.85rem; }
 
+        /* Review Interaction */
         .comment-form {
-            background: #fff;
-            padding: 1.2rem;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            margin-bottom: 0.5rem;
-        }
-
-        .comment-form p {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .star-input {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 10px;
-        }
-
-        .star-input span {
-            font-size: 1.5rem;
-            color: #ddd;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .star-input span.active {
-            color: #ffa41c;
-        }
-
-        .comment-form textarea {
-            width: 100%;
-            height: 70px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 10px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            resize: none;
-            outline: none;
-        }
-
-        .comment-form button {
-            background: #ffa41c;
-            border: 1px solid #a88734;
-            color: #111;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            font-size: 0.9rem;
-        }
-
-        .comment-item {
             background: #fff;
             padding: 1rem;
             border-radius: 8px;
-            border: 1px solid #e7e7e7;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #ddd;
+        }
+        .star-input { display: flex; gap: 5px; margin-bottom: 8px; }
+        .star-input span { font-size: 1.4rem; color: #ddd; cursor: pointer; }
+        .star-input span.active { color: #ffa41c; }
+        .comment-form textarea {
+            width: 100%; height: 60px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; font-size: 0.85rem; resize: none;
+        }
+        .comment-form button {
+            background: #ffa41c; border: 1px solid #a88734; width: 100%; padding: 8px; border-radius: 4px; margin-top: 8px; cursor: pointer; font-weight: 600;
         }
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.5rem;
+        .comment-item {
+            background: #fff; padding: 1rem; border-radius: 6px; border: 1px solid #e7e7e7;
         }
+        .user-info { display: flex; align-items: center; gap: 8px; margin-bottom: 0.4rem; }
+        .user-avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 0.7rem; color: #fff; }
+        .comment-date { font-size: 0.75rem; color: #565959; }
+        .comment-text { font-size: 0.85rem; line-height: 1.4; color: #333; margin-top: 5px; }
 
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 0.75rem;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        .user-name { font-weight: 600; font-size: 0.9rem; color: #111; }
-        .comment-date { font-size: 0.75rem; color: #565959; margin: 0.2rem 0; }
-        .comment-text { font-size: 0.85rem; line-height: 1.5; color: #333; }
-
+        /* Book Pages */
         .page {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            width: 100%; height: 100%; top: 0; left: 0;
             transform-origin: left;
             transform-style: preserve-3d;
             transition: transform var(--page-speed) cubic-bezier(0.645, 0.045, 0.355, 1);
             cursor: pointer;
-            z-index: 1;
         }
-
         .page-side {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            padding: 3.5rem 2.5rem;
+            width: 100%; height: 100%; padding: 3.5rem 3rem;
             backface-visibility: hidden;
             background: var(--paper-color);
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            display: flex; flex-direction: column; overflow-y: auto;
         }
-
-        .front { box-shadow: inset 20px 0 50px rgba(0,0,0,0.05); z-index: 2; }
-        .back { transform: rotateY(180deg); background: #fdfdfd; box-shadow: inset -20px 0 50px rgba(0,0,0,0.05); }
+        .front { box-shadow: inset 25px 0 60px rgba(0,0,0,0.05); z-index: 2; }
+        .back { transform: rotateY(180deg); background: #fcfcfc; box-shadow: inset -25px 0 60px rgba(0,0,0,0.05); }
         .page.flipped { transform: rotateY(-180deg); z-index: 2; }
 
+        /* Typography */
         .cover-black {
-            background: #000000 !important;
+            background: #000 !important;
             color: var(--gold-color) !important;
             justify-content: center !important;
-            border-left: 12px solid #111;
-            padding: 4rem;
+            border-left: 15px solid #111;
         }
-
-        .cover-black h1 { font-family: 'Cinzel', serif; color: var(--gold-color); font-size: 2.2rem; text-align: center; }
-        
-        .step-header { font-family: 'Cinzel', serif; color: var(--accent-color); font-size: 0.85rem; letter-spacing: 5px; text-align: center; margin-bottom: 1rem; font-weight: 700; }
-        .main-title { font-family: 'Cinzel', serif; color: #000; font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem; border-bottom: 2px solid #000; padding-bottom: 0.8rem; font-weight: 900; }
-        
-        .content-body { font-family: 'Lora', serif; font-size: 1.15rem; line-height: 1.8; color: #000; text-align: justify; }
-        
-        .img-box { width: 100%; height: 220px; margin-bottom: 2rem; border: 1px solid #ddd; overflow: hidden; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
-
-        .book-nav {
-            position: absolute;
-            bottom: 30px;
-            display: flex;
-            gap: 15px;
+        #p1 .front.cover-black {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://t.ctcdn.com.br/go3h_KQdrNgdx0uOeuAkmfUUZZI=/1200x675/smart/i368810.jpeg') !important;
+            background-size: cover !important;
+            background-position: center !important;
         }
+        .cover-black h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; text-align: center; font-weight: 900; }
+        
+        .step-header { font-family: 'Cinzel', serif; color: var(--accent-color); font-size: 0.9rem; letter-spacing: 6px; text-align: center; margin-bottom: 1.5rem; font-weight: 700; }
+        .main-title { font-family: 'Cinzel', serif; color: #000; font-size: 1.5rem; text-align: center; margin-bottom: 2rem; border-bottom: 2px solid #000; padding-bottom: 1rem; font-weight: 900; }
+        
+        /* Font Size Increased to 1.3rem as requested */
+        .content-body { font-family: 'Lora', serif; font-size: 1.3rem; line-height: 1.9; color: #000; text-align: justify; }
+        .content-body strong { color: var(--accent-color); }
 
-        .nav-btn {
-            background: #111;
-            color: #fff;
-            border: 1px solid var(--gold-color);
-            padding: 10px 25px;
-            font-family: 'Cinzel', serif;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
+        .book-nav { position: absolute; bottom: 15px; display: flex; gap: 10px; z-index: 100; }
+        .nav-btn { background: #000; color: #fff; border: 1px solid var(--gold-color); padding: 10px 25px; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 0.8rem; }
         .nav-btn:hover:not(:disabled) { background: var(--gold-color); color: #000; }
-        .nav-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+        .nav-btn:disabled { opacity: 0.1; cursor: not-allowed; }
 
-        #p1 { z-index: 10; }
-        #p2 { z-index: 9; }
-        #p3 { z-index: 8; }
-        #p4 { z-index: 7; }
-        #p5 { z-index: 6; }
-        #p6 { z-index: 5; }
-        #p7 { z-index: 4; }
-        #p8 { z-index: 3; }
-
-        .sidebar-reviews::-webkit-scrollbar, .page-side::-webkit-scrollbar { width: 4px; }
-        .sidebar-reviews::-webkit-scrollbar-thumb, .page-side::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
-
-        @media (max-width: 1000px) {
-            .sidebar-reviews { display: none; }
-        }
+        /* Internal Scrollbar */
+        .page-side::-webkit-scrollbar { width: 4px; }
+        .page-side::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -297,371 +179,312 @@
         <main class="book-area">
             <div class="book" id="book">
                 
-                <!-- Capa -->
+                <!-- FOLHA 1 -->
                 <div class="page" id="p1">
                     <div class="page-side front cover-black">
-                        <span style="font-size: 2.5rem;">✠</span>
+                        <span style="font-size: 3rem;">✠</span>
                         <h1>As Consequências e Reviravoltas de um Golpe!</h1>
-                        <div style="height: 1px; width: 50%; background: var(--gold-color); margin: 2rem auto;"></div>
-                        <p style="font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 5px;">MANUAL DA VINGANÇA</p>
+                        <div style="height: 2px; width: 60%; background: var(--gold-color); margin: 2rem auto;"></div>
+                        <p style="font-family: 'Cinzel'; letter-spacing: 5px;">MANUAL DE SEGURANÇA</p>
                     </div>
                     <div class="page-side back">
                         <span class="step-header">Prólogo</span>
-                        <h2 class="main-title">A Arte da Revanche</h2>
-                        <div class="img-box"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=600"></div>
+                        <h2 class="main-title">A Revanche Estratégica</h2>
                         <div class="content-body">
                             <strong>Manual de como se vingar de uma golpista(a):</strong><br><br>
-                            Este guia foi desenvolvido para expor as vulnerabilidades psicológicas de quem vive de enganar os outros. O vínculo entre o predador e a presa nunca termina com o golpe; ele apenas muda de forma.
+                            Este guia apresenta um método psicológico e prático para lidar com criminosos que abusam da confiança alheia. O objetivo é a reparação do dano emocional e a justiça.
                         </div>
                     </div>
                 </div>
 
-                <!-- Passo 1 -->
+                <!-- FOLHA 2: Passo 1 -->
                 <div class="page" id="p2">
                     <div class="page-side front">
                         <span class="step-header">Passo 1</span>
-                        <h2 class="main-title">O Controle Ilusório</h2>
+                        <h2 class="main-title">A Isenção do Controle</h2>
                         <div class="content-body">
-                            Primeiro deixe ela achar que está no controle da vida dela. Faça a golpista(a) achar que os crimes que ela cometeu ficaram impunes e que nada vai acontecer nem com ela nem com a família dela, que foi cúmplice dos golpes dela.<br><br>
-                            Deixe a golpista(a) acreditar que os golpes dela não terão consequências e deixe ela pensar que tudo acabou.
+                            Primeiro, deixe ela achar que está no controle da vida dela. Faça a golpista(a) achar que os crimes que ela cometeu ficaram impunes e que nada vai acontecer nem com ela nem com a família dela, que foi cúmplice dos golpes dela.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Caso a pessoa enganada tenha se vingado antes e tenha parado de se vingar por estresse, fazendo a golpista(a) acreditar que está no controle, ela simplesmente ficará relaxada e vai ficar com o psicológico limpo.<br><br>
-                            Deixe ela seguir a vida curtindo e rindo, e no final você, que foi prejudicado(a), vem com tudo de uma vez só, fazendo um grande estrago que ela não vai ter nem como consertar.
+                            Deixe a golpista(a) acreditar que os golpes dela não terão consequências e deixe ela pensar que tudo acabou, caso a pessoa enganada tenha se vingado antes e tenha parado de se vingar por estresse.
                         </div>
                     </div>
                 </div>
 
-                <!-- Passo 2 -->
+                <!-- FOLHA 3: Passo 1 Cont. -->
                 <div class="page" id="p3">
                     <div class="page-side front">
-                        <span class="step-header">Passo 2</span>
-                        <h2 class="main-title">Exposição Global</h2>
                         <div class="content-body">
-                            Faça a golpista(a) ser vista por todos ao seu redor, chame a atenção de todos ao redor da golpista(a), menos a atenção dela, deixe todos de olho nela, mas não deixe ela saber.<br><br>
-                            Autoridades, presidentes americanos, Interpol, CIA, e deixe que ela só saiba disso quando você quiser vê-la chorar.
+                            Fazendo a golpista(a) acreditar que está no controle, a golpista(a) simplesmente ficará relaxada e vai ficar com o psicológico limpo, achando que a vida dela só tem os problemas que ela enxerga e não os problemas das consequências dos seus crimes.
                         </div>
                     </div>
                     <div class="page-side back">
                         <div class="content-body">
-                            Faça dívidas no nome dela em outros países, faça ela ser procurada na China, Coreia, África, Afeganistão, Ucrânia, Rússia, e depois, quando ela descobrir, será tarde demais.<br><br>
-                            A invisibilidade da sua ação é sua maior arma. Deixe o cerco fechar sem que ela perceba o primeiro movimento.
+                            Deixe a golpista(a) seguir a vida dela curtindo, fazendo planos, rindo, e no final você, que foi prejudicado(a) por ela, vem com tudo de uma vez só, fazendo um grande estrago que ela não vai ter nem como consertar.
                         </div>
                     </div>
                 </div>
 
-                <!-- Passo 3 e 4 -->
+                <!-- FOLHA 4: Passo 2 -->
                 <div class="page" id="p4">
                     <div class="page-side front">
-                        <span class="step-header">Passo 3</span>
-                        <h2 class="main-title">Psicopatas em Foco</h2>
+                        <span class="step-header">Passo 2</span>
+                        <h2 class="main-title">A Visibilidade Fatal</h2>
                         <div class="content-body">
-                            Geralmente, psicopatas não têm sentimentos e só se importam com eles mesmos. Existem muitos que ignoram até a própria família quando ela é atacada. O que pode ser feito é colocar esse(a) psicopata(a) nos holofotes.<br><br>
-                            Alerte que ele(a) não é uma vítima, e sim uma pessoa doente que manipula, engana e finge chorar para ter vantagens.
+                            <strong>Como se vingar de uma golpista(a):</strong><br><br>
+                            Faça a golpista(a) ser vista por todos ao seu redor, chame a atenção de todos ao redor da golpista(a), menos a atenção dela, deixe todos de olho nela, mas não deixe ela saber.
                         </div>
                     </div>
                     <div class="page-side back">
-                        <span class="step-header">Passo 4</span>
-                        <h2 class="main-title">A Mente do Golpista</h2>
                         <div class="content-body">
-                            Golpistas bloqueiam as pessoas tentando cortar todos os contatos. Mas eles não pensam que as vítimas nunca esquecem o rosto de quem as roubou. A vítima fica calada, faz planos e se vinga.<br><br>
-                            E quando a vingança vem, o golpista se finge de vítima imediatamente, tentando inverter o papel para transformar quem ele roubou em um "monstro".
+                            Autoridades, presidentes americanos, Interpol, CIA, e deixe que ela só saiba disso quando você quiser vê-la chorar. Faça dívidas no nome dela em outros países, faça ela ser procurada na China, Coreia, África, Afeganistão, Ucrânia, Rússia, e depois, quando ela descobrir, será tarde demais.
                         </div>
                     </div>
                 </div>
 
-                <!-- Passo 4 Cont e Passo 5 Intro -->
+                <!-- FOLHA 5: Passo 3 -->
                 <div class="page" id="p5">
                     <div class="page-side front">
-                        <h2 class="main-title">O Único Caminho</h2>
+                        <span class="step-header">Passo 3</span>
+                        <h2 class="main-title">O Abalo dos Psicopatas</h2>
                         <div class="content-body">
-                            Na cabeça da vítima, só resta uma única alternativa: a vingança. A vingança alivia a dor e tira o sentimento de impotência por ter sido roubada e usada. O golpista esquece que tudo o que fazemos tem consequências.<br><br>
-                            Se o(a) golpista(a) não resolve com a vítima, há casos em que a vítima se vinga para sempre, já que a dívida passa a existir entre ambas(os) para sempre.
+                            Geralmente, psicopatas não têm sentimentos e só se importam com eles mesmos e, às vezes, com a família. Muitos deles nem se importam com a família. Existem muitos psicopatas que fazem coisas erradas e, quando a família é atacada, eles simplesmente ignoram.
                         </div>
                     </div>
                     <div class="page-side back">
-                        <span class="step-header">Passo 5</span>
-                        <h2 class="main-title">Tipos de Golpes</h2>
                         <div class="content-body">
-                            <strong>Eletrônicos e Empréstimos:</strong> Vendas falsas e taxas adiantadas que ferram o psicológico.<br>
-                            <strong>Virtuais:</strong> OLX, Facebook e Mercado Livre, cobrando taxas fora da plataforma.<br>
-                            <strong>Golpe do Amor:</strong> Manipulação em apps de lives, fingindo amor por meses para tirar dinheiro e depois tirar a máscara achando que ficará por isso mesmo.
+                            ...e deixam suas famílias arcarem com as consequências de seus erros. Então, não há muito o que fazer para abalar um(a) psicopata(a). O que pode ser feito é colocar esse(a) psicopata(a) nos holofotes, chamar a atenção de amigos(as) e parentes.
                         </div>
                     </div>
                 </div>
 
-                <!-- Passo 5 Cont -->
+                <!-- FOLHA 6: Passo 3 Cont. -->
                 <div class="page" id="p6">
                     <div class="page-side front">
-                        <h2 class="main-title">A Crueldade do Golpe</h2>
                         <div class="content-body">
-                            Golpistas ignoram o tempo perdido, a quebra de confiança e o psicológico destruído ao seu bel-prazer. Também há o golpe do cartão clonado com motoboys e dados da dark web.<br><br>
-                            E o pior: golpes contra idosos e vulneráveis, fingindo ser assistência social para abertura de contas e lavagem de dinheiro, como no caso da criminosa apelidada de Felina.
+                            Alerte que o(a) psicopata(a) não é uma vítima, e sim uma pessoa doente que manipula, engana, finge chorar, brinca com os sentimentos de outras pessoas apenas para o próprio bem e para ter vantagens.
                         </div>
                     </div>
                     <div class="page-side back">
-                        <span class="step-header">Passo 6</span>
-                        <h2 class="main-title">Ações de Vingança</h2>
                         <div class="content-body">
-                            Vítimas contratam detetives e outras pessoas para atacar sem sujar as próprias mãos. Usam grupos de doação para enviar trotes constantes, cestas básicas falsas e motoboys na casa dos golpistas.<br><br>
-                            Enquanto a vítima tiver o CPF, é impossível se esconder, não importa se está em Fortaleza ou Ubajara.
+                            Finge que não fez nada de errado com outras pessoas, finge que é vítima de histórias das quais o(a) psicopata(a) é vilão(ã). A verdade exposta é o único antídoto contra a manipulação dessas figuras.
                         </div>
                     </div>
                 </div>
 
-                <!-- Passo 6 Cont e Passo 7 -->
+                <!-- FOLHA 7: Passo 4 -->
                 <div class="page" id="p7">
                     <div class="page-side front">
-                        <h2 class="main-title">A Ruína Total</h2>
+                        <span class="step-header">Passo 4</span>
+                        <h2 class="main-title">O Pensamento do Réu</h2>
                         <div class="content-body">
-                            A vítima fica calada para que o golpista se sinta seguro e relaxado. Ela sabe de todos os detalhes, namorados e familiares onde o golpista mora.<br><br>
-                            Quando a vítima estala os dedos, a vida do(a) golpista estará completamente arruinada, enquanto a vítima apenas observa, rindo e relaxando do estrago causado.
+                            <strong>O que um(a) golpista(a) pensa?</strong><br><br>
+                            Golpistas não se importam com ninguém, eles roubam pessoas, não pensam nos sentimentos delas de frustração, bloqueiam as pessoas por meio de contatos e redes sociais tentando cortar todos os contatos.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Mas uma coisa que os(as) golpistas(as) não pensam é que as vítimas nunca, em suas vidas, conseguem esquecer o rosto do(a) golpista(a) que as roubou. Nunca, em suas vidas, as vítimas esquecem quem são os(as) golpistas(as) que as roubaram.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 8: Passo 4 Cont. -->
+                <div class="page" id="p8">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            O(a) golpista(a) é sempre o(a) primeiro(a) a esquecer o que fez, mas a vítima não se esquece. A vítima fica calada, a vítima faz planos, a vítima se vinga. E quando a vítima se vinga, o(a) golpista(a) se finge de vítima imediatamente.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Diz que a pessoa que ele(a) roubou é um monstro, apenas porque a pessoa não teve nenhuma outra alternativa que não fosse a vingança. A vítima tenta contato para entender o porquê do golpe, só que o golpista bloqueia a pessoa.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 9: Passo 4 Cont. -->
+                <div class="page" id="p9">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            Na cabeça da vítima, só resta a vingança. O golpista vê a vingança e começa a mentir para si mesmo, dizendo que a vítima é um monstro ou psicopata, tentando inverter em sua mente que ele é a vítima por estar sofrendo as consequências.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            A vingança alivia a dor de uma pessoa prejudicada. Tira o sentimento de impotência por ter sido roubada, usada e prejudicada pelo tempo perdido enquanto o(a) golpista(a) só visava lucrar. Tudo o que fazemos tem consequências.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 10: Passo 5 -->
+                <div class="page" id="p10">
+                    <div class="page-side front">
+                        <span class="step-header">Passo 5</span>
+                        <h2 class="main-title">A Tipologia do Golpe</h2>
+                        <div class="content-body">
+                            <strong>Golpes de venda de eletrônicos:</strong> vendem e não entregam. Estrago no psicológico da vítima. <br><br>
+                            <strong>Golpe de empréstimo:</strong> solicita dinheiro adiantado e rouba a vítima, ferrando o psicológico para sempre.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            <strong>Golpes virtuais:</strong> OLX, Facebook, Mercado Livre, Amazon, onde anunciam e cobram taxas fora da plataforma. <br><br>
+                            <strong>Golpe do amor:</strong> manipulação através de lives, fingindo amar para tirar dinheiro por pena.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 11: Passo 5 Cont. -->
+                <div class="page" id="p11">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            Os golpistas fazem planos que nunca iriam acontecer, fazem a vítima perder meses da vida e, de um dia para o outro, tiram a máscara. Ignoram o tempo, a quebra de confiança e o psicológico destruído ao seu bel-prazer.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Deixam a vítima de lado achando que ficará por isso mesmo. A vítima tenta dar chances, mas os golpistas preferem as consequências. Eles não sabem que as consequências do golpe do amor marcam para sempre, e a vítima se vinga para sempre.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 12: Passo 5 Cont. -->
+                <div class="page" id="p12">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            <strong>Cartão clonado:</strong> motoboys, dados da dark web, fingindo ser funcionários do banco para pegar o cartão e a senha. <br><br>
+                            <strong>Golpes contra idosos:</strong> curso de Cuidador Social para abrir contas e lavagem de dinheiro em nome de vulneráveis.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Exemplo real: a criminosa apelidada de <strong>Felina</strong>, que já passou por diversos bicos e esquemas ilegais em benefício próprio usando o reconhecimento facial de documentos de idosos para abertura de contas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 13: Passo 6 -->
+                <div class="page" id="p13">
+                    <div class="page-side front">
+                        <span class="step-header">Passo 6</span>
+                        <h2 class="main-title">A Reação Silenciosa</h2>
+                        <div class="content-body">
+                            Vítimas contratam outras pessoas para atacarem golpistas. Entram em grupos de doações para recrutar pessoas que enviam trotes, pedem motoboys, gás e cestas básicas na casa do golpista. A vítima fica imune às consequências.
+                        </div>
+                    </div>
+                    <div class="page-side back">
+                        <div class="content-body">
+                            Contratam detetives e tiram fotos da casa. Enquanto a vítima tiver o CPF, é impossível se esconder, seja em Fortaleza ou Ubajara. A vítima sabe com quem o golpista mora e onde ele está em tempo real, mesmo calada.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOLHA 14: Passo 6 Cont. -->
+                <div class="page" id="p14">
+                    <div class="page-side front">
+                        <div class="content-body">
+                            A vítima quer que o golpista ache que ela é incapaz, para que ele fique relaxado e sem medo. Quando a vítima estala os dedos, a vida do(a) golpista estará completamente arruinada, e a vítima apenas ficará rindo.
                         </div>
                     </div>
                     <div class="page-side back">
                         <span class="step-header">Passo 7</span>
-                        <h2 class="main-title">O Arrependimento</h2>
+                        <h2 class="main-title">A Condição do Perdão</h2>
                         <div class="content-body">
-                            Somente perdoe quando o(a) golpista tomar vergonha na cara e pedir desculpas sinceras. Enquanto isso não chega, ele(a) deve continuar colhendo as consequências de tudo o que tirou das vítimas: tempo, dinheiro e dedicação.<br><br>
-                            O golpista só liga quando a vítima não tem outra opção a não ser se vingar.
+                            Somente quando o(a) golpista tomar vergonha na cara, se arrepender por ter roubado e pedir desculpas. Quando esse dia chegar, a pessoa roubada certamente vai perdoar e ambos seguirão suas vidas.
                         </div>
                     </div>
                 </div>
 
-                <!-- Conclusão -->
-                <div class="page" id="p8">
+                <!-- FOLHA 15: Passo 7 Cont. e Final -->
+                <div class="page" id="p15">
                     <div class="page-side front">
-                        <h2 class="main-title">Lição Final</h2>
                         <div class="content-body">
-                            Aprendam com este e-book: nem todo mundo tem sangue de barata. Resolver dívidas antes que seja tarde é libertador. Espero que tenham aprendido que a vingança alivia, mas também faz querer mais e mais.<br><br>
-                            Se conhecer um(a) golpista(a), avise antecipadamente: tirar a máscara terá consequências imediatas.
+                            Enquanto o arrependimento não chega, ele deve colher o que tirou: tempo, dinheiro e dedicação. O golpista acha que roubou só dinheiro, mas roubou a vida. Ele só liga quando a única opção é a vingança. Resolvam antes que seja tarde.
                         </div>
                     </div>
                     <div class="page-side back cover-black">
                         <h1>FIM</h1>
-                        <p style="font-family: 'Cinzel'; color: var(--gold-color); letter-spacing: 5px;">A JUSTIÇA FOI FEITA</p>
+                        <div style="height: 1px; width: 40%; background: var(--gold-color); margin: 2rem auto;"></div>
+                        <p style="font-family: 'Cinzel'; font-size: 0.9rem;">JUSTIÇA ALCANÇADA</p>
                     </div>
                 </div>
 
             </div>
 
             <div class="book-nav">
-                <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-                <button id="nextBtn" class="nav-btn">Próximo</button>
+                <button id="prevBtn" class="nav-btn" disabled>ANTERIOR</button>
+                <button id="nextBtn" class="nav-btn">PRÓXIMA PÁGINA</button>
             </div>
         </main>
 
-        <aside class="sidebar-reviews" id="reviewSidebar">
+        <!-- Sidebar Reviews -->
+        <aside class="sidebar-reviews">
             <div class="reviews-header">
-                <h2>Avaliações Recentes</h2>
+                <h2>Comentários e Notas</h2>
                 <div class="rating-summary">
                     <span class="stars-display">★★★★★</span>
-                    <span style="font-weight: 600; color: #111; font-size: 0.9rem;">4.9 de 5</span>
+                    <span style="font-weight: 700; color: #111;">4.9 / 5</span>
                 </div>
-                <div class="count">174 classificações globais</div>
+                <div class="count">174 depoimentos verificados</div>
             </div>
 
             <div class="comment-form">
                 <p>Sua Avaliação:</p>
                 <div class="star-input" id="starSelector">
-                    <span data-value="1">★</span>
-                    <span data-value="2">★</span>
-                    <span data-value="3">★</span>
-                    <span data-value="4">★</span>
-                    <span data-value="5">★</span>
+                    <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
                 </div>
-                <textarea placeholder="Compartilhe como o e-book ajudou você..."></textarea>
-                <button>Publicar Comentário</button>
+                <textarea placeholder="Como este e-book te ajudou?"></textarea>
+                <button>Publicar</button>
             </div>
 
-            <div id="commentsList">
-                <!-- Lista de 20 Comentários Reais -->
-                <div class="comment-item">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #3498db;">RC</div>
-                        <span class="user-name">Ricardo Cavalcante</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 30 de novembro de 2025</p>
-                    <p class="comment-text">Cirúrgico. O passo 2 me deu a estratégia que eu precisava para parar de ser a vítima.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #e74c3c;">AM</div>
-                        <span class="user-name">Ana Maria Silva</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 29 de novembro de 2025</p>
-                    <p class="comment-text">O texto sobre o "golpe do amor" descreve exatamente o que eu passei. Esse manual é uma libertação.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #2ecc71;">MT</div>
-                        <span class="user-name">Marcos Teixeira</span>
-                    </div>
-                    <span class="stars-display">★★★★☆</span>
-                    <p class="comment-date">Avaliado em 28 de novembro de 2025</p>
-                    <p class="comment-text">Muito bom o conteúdo. A parte sobre a Felina me deixou em choque, já vi casos parecidos.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #9b59b6;">JL</div>
-                        <span class="user-name">Juliana L. Mota</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 27 de novembro de 2025</p>
-                    <p class="comment-text">Eles realmente se fingem de vítimas quando a gente revida. Esse livro abriu meus olhos.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #f1c40f;">PR</div>
-                        <span class="user-name">Paulo Roberto Neves</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 26 de novembro de 2025</p>
-                    <p class="comment-text">O melhor investimento do ano. O passo 6 sobre grupos de doação é fenomenal.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #1abc9c;">FS</div>
-                        <span class="user-name">Fernanda Souza</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 25 de novembro de 2025</p>
-                    <p class="comment-text">A clareza do Passo 1 é essencial. Eles relaxam e a gente ataca. Perfeito.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #34495e;">CE</div>
-                        <span class="user-name">Carlos Eduardo G.</span>
-                    </div>
-                    <span class="stars-display">★★★☆☆</span>
-                    <p class="comment-date">Avaliado em 24 de novembro de 2025</p>
-                    <p class="comment-text">Conteúdo denso e realista. Mostra o lado que ninguém quer admitir da vingança.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #e67e22;">BO</div>
-                        <span class="user-name">Beatriz Oliveira</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 23 de novembro de 2025</p>
-                    <p class="comment-text">A vítima nunca esquece o rosto. Isso é a maior verdade de todas. Livro nota 10.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #d35400;">GS</div>
-                        <span class="user-name">Gabriel Santos</span>
-                    </div>
-                    <span class="stars-display">★★★★☆</span>
-                    <p class="comment-date">Avaliado em 22 de novembro de 2025</p>
-                    <p class="comment-text">Eles acham que podem se esconder em qualquer cidade, mas o CPF não mente.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #7f8c8d;">LC</div>
-                        <span class="user-name">Luciana Costa</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 21 de novembro de 2025</p>
-                    <p class="comment-text">Obrigada por este manual. O sentimento de impotência foi embora.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #c0392b;">AF</div>
-                        <span class="user-name">André Felipe</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 20 de novembro de 2025</p>
-                    <p class="comment-text">Excelente manual. Vingança fria e calculada é o que funciona contra golpistas.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #16a085;">RN</div>
-                        <span class="user-name">Rafael Nunes</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 19 de novembro de 2025</p>
-                    <p class="comment-text">O alerta sobre as famílias cúmplices é muito importante. Eles se beneficiam do crime.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #27ae60;">SP</div>
-                        <span class="user-name">Simone Pereira</span>
-                    </div>
-                    <span class="stars-display">★★★★☆</span>
-                    <p class="comment-date">Avaliado em 18 de novembro de 2025</p>
-                    <p class="comment-text">Finalmente alguém falou sobre a quebra de confiança nos apps de lives.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #2980b9;">TA</div>
-                        <span class="user-name">Thiago Albuquerque</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 17 de novembro de 2025</p>
-                    <p class="comment-text">Recuperei meu dinheiro graças aos conselhos de pressão psicológica daqui.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #8e44ad;">VR</div>
-                        <span class="user-name">Vanessa Rodrigues</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 15 de novembro de 2025</p>
-                    <p class="comment-text">A lição final sobre o vínculo eterno de dívida é profunda. Recomendadíssimo.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #2c3e50;">FD</div>
-                        <span class="user-name">Felipe Diniz</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 12 de novembro de 2025</p>
-                    <p class="comment-text">Dossiê completo. Blindagem mental total para quem trabalha com vendas online.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #f39c12;">CL</div>
-                        <span class="user-name">Carina Lopes</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 10 de novembro de 2025</p>
-                    <p class="comment-text">O capítulo sobre psicopatas é cirúrgico. Eles não têm alma mesmo.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #d35400;">RF</div>
-                        <span class="user-name">Rodrigo Freitas</span>
-                    </div>
-                    <span class="stars-display">★★★★☆</span>
-                    <p class="comment-date">Avaliado em 08 de novembro de 2025</p>
-                    <p class="comment-text">Justiça tarda mas não falha. Esse livro é a prova viva disso.</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #c0392b;">AC</div>
-                        <span class="user-name">Amanda Coimbra</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 05 de novembro de 2025</p>
-                    <p class="comment-text">Parar de ser "boazinha" com golpista foi minha melhor decisão. Obrigada!</p>
-                </div>
-                <div class="comment-item" style="margin-top: 10px;">
-                    <div class="user-info">
-                        <div class="user-avatar" style="background: #7f8c8d;">BS</div>
-                        <span class="user-name">Bruno Silveira</span>
-                    </div>
-                    <span class="stars-display">★★★★★</span>
-                    <p class="comment-date">Avaliado em 02 de novembro de 2025</p>
-                    <p class="comment-text">A vingança é um prato frio e esse manual ensina a temperar bem.</p>
-                </div>
-            </div>
+            <div id="commentsContainer">
+                <!-- 20 reviews fakes com nomes brasileiros e datas de novembro/2025 -->
+                <script>
+                    const names = ["Ricardo C.", "Ana Maria S.", "Marcos T.", "Juliana M.", "Paulo R.", "Fernanda S.", "Carlos E.", "Beatriz O.", "Gabriel S.", "Luciana C.", "André F.", "Rafael N.", "Simone P.", "Thiago A.", "Vanessa R.", "Felipe D.", "Carina L.", "Rodrigo F.", "Amanda C.", "Bruno S."];
+                    const reviews = [
+                        "O Passo 7 é o mais importante. A gente não recupera o tempo, mas recupera a dignidade.",
+                        "Impressionante como descreve a 'Felina'. Já vi casos assim no interior.",
+                        "A vingança fria ensinada aqui é mil vezes melhor que qualquer briga.",
+                        "Leitura necessária para quem foi enganado no WhatsApp.",
+                        "O CPF é realmente a chave. O golpista não tem pra onde fugir.",
+                        "Entendi finalmente que o golpista se faz de vítima quando a gente revida.",
+                        "Muito bom o passo sobre os psicopatas. Eles não têm alma mesmo.",
+                        "Finalmente consegui dormir em paz após ler este manual.",
+                        "O golpe do amor me quebrou, mas este livro me reconstruiu.",
+                        "Justiça tardia mas certeira. Recomendo a todos.",
+                        "As táticas de pressão psicológica funcionam de verdade.",
+                        "Parar de ser boazinha foi minha melhor decisão.",
+                        "A dívida é eterna se não houver arrependimento.",
+                        "Gostei dos detalhes sobre a Interpol e CIA no Passo 2.",
+                        "O alívio da vingança organizada é indescritível.",
+                        "Achei pesado em algumas partes, mas quem sofreu sabe que é necessário.",
+                        "Dossiê completo. Blindagem mental de alto nível.",
+                        "O golpista esquece, mas a vítima tem memória de elefante.",
+                        "Excelente investimento. Vale cada centavo pela paz de espírito.",
+                        "A máscara cai e a conta chega. Melhor manual da categoria."
+                    ];
 
-            <div style="text-align: center; padding: 1.5rem; color: #007185; cursor: pointer; font-size: 0.85rem; font-weight: 600;">
-                Carregar mais 154 avaliações...
+                    const container = document.getElementById('commentsContainer');
+                    for(let i=0; i<20; i++) {
+                        const date = 30 - i;
+                        const stars = i === 2 || i === 6 ? "★★★★☆" : "★★★★★";
+                        const html = `
+                            <div class="comment-item" style="margin-top:10px">
+                                <div class="user-info">
+                                    <div class="user-avatar" style="background:hsl(${i*18}, 70%, 50%)">${names[i].substring(0,1)}</div>
+                                    <span class="user-name">${names[i]}</span>
+                                </div>
+                                <span class="stars-display">${stars}</span>
+                                <div class="comment-date">${date} de novembro de 2025</div>
+                                <p class="comment-text">${reviews[i]}</p>
+                            </div>
+                        `;
+                        container.innerHTML += html;
+                    }
+                </script>
             </div>
         </aside>
     </div>
@@ -670,30 +493,23 @@
         const prevBtn = document.querySelector("#prevBtn");
         const nextBtn = document.querySelector("#nextBtn");
         const book = document.querySelector("#book");
+        const pages = [];
+        const totalSheets = 15;
 
-        const pages = [
-            document.querySelector("#p1"), document.querySelector("#p2"),
-            document.querySelector("#p3"), document.querySelector("#p4"),
-            document.querySelector("#p5"), document.querySelector("#p6"),
-            document.querySelector("#p7"), document.querySelector("#p8")
-        ];
+        for(let i=1; i<=totalSheets; i++) {
+            pages.push(document.querySelector("#p"+i));
+        }
 
         let currentLocation = 1;
-        let numOfPapers = 8;
-        let maxLocation = numOfPapers + 1;
+        let maxLocation = totalSheets + 1;
 
-        const starSelector = document.getElementById('starSelector');
-        const stars = starSelector.querySelectorAll('span');
-        
-        stars.forEach(star => {
+        // Star Selector Logic
+        const starSpans = document.querySelectorAll('#starSelector span');
+        starSpans.forEach(star => {
             star.addEventListener('click', () => {
-                const value = parseInt(star.getAttribute('data-value'));
-                stars.forEach(s => {
-                    if(parseInt(s.getAttribute('data-value')) <= value) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
+                const val = parseInt(star.getAttribute('data-value'));
+                starSpans.forEach(s => {
+                    s.classList.toggle('active', parseInt(s.getAttribute('data-value')) <= val);
                 });
             });
         });
@@ -703,55 +519,50 @@
             prevBtn.disabled = false;
         }
 
-        function closeBook(isAtBeginning) {
-            if(isAtBeginning) {
-                book.style.transform = "translateX(0%)";
-            } else {
-                book.style.transform = "translateX(100%)";
-            }
+        function closeBook(atBeginning) {
+            book.style.transform = atBeginning ? "translateX(0%)" : "translateX(100%)";
         }
 
-        function goNextPage() {
+        function goNext() {
             if(currentLocation < maxLocation) {
-                switch(currentLocation) {
-                    case 1: openBook(); pages[0].classList.add("flipped"); pages[0].style.zIndex = 1; break;
-                    case 2: pages[1].classList.add("flipped"); pages[1].style.zIndex = 2; break;
-                    case 3: pages[2].classList.add("flipped"); pages[2].style.zIndex = 3; break;
-                    case 4: pages[3].classList.add("flipped"); pages[3].style.zIndex = 4; break;
-                    case 5: pages[4].classList.add("flipped"); pages[4].style.zIndex = 5; break;
-                    case 6: pages[5].classList.add("flipped"); pages[5].style.zIndex = 6; break;
-                    case 7: pages[6].classList.add("flipped"); pages[6].style.zIndex = 7; break;
-                    case 8: pages[7].classList.add("flipped"); pages[7].style.zIndex = 8; closeBook(false); nextBtn.disabled = true; break;
+                if(currentLocation === 1) openBook();
+                const page = pages[currentLocation - 1];
+                page.classList.add("flipped");
+                page.style.zIndex = currentLocation;
+                if(currentLocation === totalSheets) {
+                    closeBook(false);
+                    nextBtn.disabled = true;
                 }
                 currentLocation++;
             }
         }
 
-        function goPrevPage() {
+        function goPrev() {
             if(currentLocation > 1) {
-                switch(currentLocation) {
-                    case 2: closeBook(true); pages[0].classList.remove("flipped"); pages[0].style.zIndex = 10; prevBtn.disabled = true; break;
-                    case 3: pages[1].classList.remove("flipped"); pages[1].style.zIndex = 9; break;
-                    case 4: pages[2].classList.remove("flipped"); pages[2].style.zIndex = 8; break;
-                    case 5: pages[3].classList.remove("flipped"); pages[3].style.zIndex = 7; break;
-                    case 6: pages[4].classList.remove("flipped"); pages[4].style.zIndex = 6; break;
-                    case 7: pages[5].classList.remove("flipped"); pages[5].style.zIndex = 5; break;
-                    case 8: pages[6].classList.remove("flipped"); pages[6].style.zIndex = 4; nextBtn.disabled = false; break;
-                    case 9: openBook(); pages[7].classList.remove("flipped"); pages[7].style.zIndex = 3; nextBtn.disabled = false; break;
+                if(currentLocation === 2) {
+                    closeBook(true);
+                    prevBtn.disabled = true;
+                }
+                if(currentLocation === maxLocation) {
+                    openBook();
+                    nextBtn.disabled = false;
                 }
                 currentLocation--;
+                const page = pages[currentLocation - 1];
+                page.classList.remove("flipped");
+                page.style.zIndex = (totalSheets + 1) - currentLocation;
             }
         }
 
-        nextBtn.addEventListener("click", goNextPage);
-        prevBtn.addEventListener("click", goPrevPage);
+        nextBtn.addEventListener("click", goNext);
+        prevBtn.addEventListener("click", goPrev);
 
         pages.forEach((page, index) => {
             page.addEventListener("click", () => {
                 if(page.classList.contains("flipped")) {
-                    if(currentLocation - 1 === index + 1) goPrevPage();
+                    if(currentLocation - 1 === index + 1) goPrev();
                 } else {
-                    if(currentLocation === index + 1) goNextPage();
+                    if(currentLocation === index + 1) goNext();
                 }
             });
         });
