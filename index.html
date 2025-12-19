@@ -78,11 +78,11 @@
         }
 
         .sidebar-reviews {
-            width: 420px;
+            width: 450px;
             background: var(--sidebar-bg);
             border-left: 1px solid #ddd;
             overflow-y: auto;
-            padding: 2rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
@@ -98,7 +98,7 @@
         }
 
         .reviews-header h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #111;
             margin-bottom: 0.5rem;
         }
@@ -110,70 +110,97 @@
             margin-bottom: 0.5rem;
         }
 
-        .stars { color: #ffa41c; font-size: 1.1rem; }
-        .count { color: #565959; font-size: 0.9rem; }
-
-        .comment-item {
-            background: #fff;
-            padding: 1.2rem;
-            border-radius: 8px;
-            border: 1px solid #e7e7e7;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-
-        .user-avatar {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            color: #fff;
-        }
-
-        .user-name { font-weight: 600; font-size: 0.95rem; color: #111; }
-        .comment-date { font-size: 0.8rem; color: #565959; margin: 0.3rem 0; }
-        .comment-text { font-size: 0.9rem; line-height: 1.5; color: #333; }
+        .stars-display { color: #ffa41c; font-size: 1.1rem; }
+        .count { color: #565959; font-size: 0.85rem; }
 
         .comment-form {
             background: #fff;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 8px;
             border: 1px solid #ddd;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-form p {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .star-input {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .star-input span {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .star-input span.active {
+            color: #ffa41c;
         }
 
         .comment-form textarea {
             width: 100%;
-            height: 60px;
+            height: 70px;
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 10px;
             font-family: inherit;
+            font-size: 0.9rem;
             resize: none;
-            margin-top: 10px;
+            outline: none;
         }
 
         .comment-form button {
             background: #ffa41c;
             border: 1px solid #a88734;
             color: #111;
-            padding: 8px 20px;
+            padding: 10px;
             border-radius: 4px;
             margin-top: 10px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             width: 100%;
+            font-size: 0.9rem;
         }
+
+        .comment-item {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e7e7e7;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .user-name { font-weight: 600; font-size: 0.9rem; color: #111; }
+        .comment-date { font-size: 0.75rem; color: #565959; margin: 0.2rem 0; }
+        .comment-text { font-size: 0.85rem; line-height: 1.5; color: #333; }
 
         .page {
             position: absolute;
@@ -214,11 +241,13 @@
 
         .cover-black h1 { font-family: 'Cinzel', serif; color: var(--gold-color); font-size: 2.2rem; text-align: center; }
         
-        .step-header { font-family: 'Cinzel', serif; color: var(--accent-color); font-size: 0.8rem; letter-spacing: 4px; text-align: center; margin-bottom: 1rem; }
-        .main-title { font-family: 'Cinzel', serif; color: #000; font-size: 1.4rem; text-align: center; margin-bottom: 1.5rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem; }
-        .content-body { font-family: 'Lora', serif; font-size: 1rem; line-height: 1.7; color: #000; text-align: justify; }
+        .step-header { font-family: 'Cinzel', serif; color: var(--accent-color); font-size: 0.85rem; letter-spacing: 5px; text-align: center; margin-bottom: 1rem; font-weight: 700; }
+        .main-title { font-family: 'Cinzel', serif; color: #000; font-size: 1.6rem; text-align: center; margin-bottom: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.8rem; font-weight: 900; }
         
-        .img-box { width: 100%; height: 200px; margin-bottom: 1.5rem; border: 1px solid #ddd; overflow: hidden; }
+        /* Aumento do Texto Solicitado */
+        .content-body { font-family: 'Lora', serif; font-size: 1.15rem; line-height: 1.8; color: #000; text-align: justify; }
+        
+        .img-box { width: 100%; height: 220px; margin-bottom: 2rem; border: 1px solid #ddd; overflow: hidden; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
 
         .book-nav {
@@ -250,7 +279,10 @@
         #p7 { z-index: 4; }
         #p8 { z-index: 3; }
 
-        @media (max-width: 1100px) {
+        .sidebar-reviews::-webkit-scrollbar, .page-side::-webkit-scrollbar { width: 4px; }
+        .sidebar-reviews::-webkit-scrollbar-thumb, .page-side::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+        @media (max-width: 1000px) {
             .sidebar-reviews { display: none; }
         }
     </style>
@@ -271,7 +303,7 @@
                         <span style="font-size: 2.5rem;">✠</span>
                         <h1>As Consequências e Reviravoltas de um Golpe!</h1>
                         <div style="height: 1px; width: 50%; background: var(--gold-color); margin: 2rem auto;"></div>
-                        <p style="font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px;">DOSSIÊ DE SEGURANÇA</p>
+                        <p style="font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 5px;">DOSSIÊ DE SEGURANÇA</p>
                     </div>
                     <div class="page-side back">
                         <span class="step-header">Manual</span>
@@ -309,7 +341,7 @@
                         </div>
                     </div>
                     <div class="page-side back">
-                        <h3 style="margin-bottom: 1rem;">O Cerco Internacional:</h3>
+                        <h3 style="margin-bottom: 1.5rem; font-family: 'Cinzel'; font-size: 1.3rem;">O Cerco Internacional:</h3>
                         <div class="content-body">
                             Faça a golpista ser vista por todos ao seu redor, chame a atenção de todos ao redor da golpista, menos a atenção dela; deixe todos de olho nela, mas não deixe ela saber. Autoridades, presidentes americanos, <strong>Interpol, CIA</strong>...
                         </div>
@@ -372,7 +404,7 @@
                         <div class="content-body" style="text-align: center; padding-top: 3rem;">
                             <p>Esperamos que este conhecimento tenha sido libertador.</p>
                             <br><br>
-                            <span style="font-size: 2rem;">❦</span>
+                            <span style="font-size: 2.5rem;">❦</span>
                         </div>
                     </div>
                 </div>
@@ -380,10 +412,10 @@
                 <div class="page" id="p8">
                     <div class="page-side front cover-black">
                         <h1>FIM</h1>
-                        <p style="font-size: 0.7rem; margin-top: 2rem; letter-spacing: 2px;">DOCUMENTO FINALIZADO</p>
+                        <p style="font-size: 0.8rem; margin-top: 2rem; letter-spacing: 3px;">DOCUMENTO FINALIZADO</p>
                     </div>
                     <div class="page-side back cover-black">
-                        <p>A Revanche Final</p>
+                        <p style="font-family: 'Cinzel'; color: var(--gold-color);">A REVANCHE FINAL</p>
                     </div>
                 </div>
 
@@ -395,134 +427,214 @@
             </div>
         </main>
 
-        <aside class="sidebar-reviews">
+        <aside class="sidebar-reviews" id="reviewSidebar">
             <div class="reviews-header">
-                <h2>Avaliações Clientes</h2>
+                <h2>Avaliações Recentes</h2>
                 <div class="rating-summary">
-                    <span class="stars">★★★★★</span>
-                    <span style="font-weight: 600; color: #111;">4.9 de 5</span>
+                    <span class="stars-display">★★★★★</span>
+                    <span style="font-weight: 600; color: #111; font-size: 0.9rem;">4.9 de 5</span>
                 </div>
                 <div class="count">174 classificações globais</div>
             </div>
 
             <div class="comment-form">
-                <p style="font-size: 0.8rem; font-weight: 600; color: #555;">Deixe sua opinião sobre este manual:</p>
-                <textarea placeholder="Compartilhe como este e-book te ajudou..."></textarea>
-                <button>Enviar Avaliação</button>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #3498db;">RC</div>
-                    <span class="user-name">Ricardo Cavalcante</span>
+                <p>Sua Avaliação:</p>
+                <div class="star-input" id="starSelector">
+                    <span data-value="1">★</span>
+                    <span data-value="2">★</span>
+                    <span data-value="3">★</span>
+                    <span data-value="4">★</span>
+                    <span data-value="5">★</span>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 30 de novembro de 2025</p>
-                <p class="comment-text">Este e-book abriu meus olhos. O Passo 2 sobre o cerco internacional é assustadoramente eficaz. Finalmente sinto que a justiça está sendo feita.</p>
+                <textarea placeholder="Compartilhe como o e-book ajudou você..."></textarea>
+                <button>Publicar Comentário</button>
             </div>
 
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #e74c3c;">AM</div>
-                    <span class="user-name">Ana Maria Silva</span>
+            <div id="commentsList">
+                <div class="comment-item">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #3498db;">RC</div>
+                        <span class="user-name">Ricardo Cavalcante</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 30 de novembro de 2025</p>
+                    <p class="comment-text">Cirúrgico. O passo 2 me deu a estratégia que eu precisava para parar de ser a vítima.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 28 de novembro de 2025</p>
-                <p class="comment-text">Impressionante como o autor descreve a inversão de culpa que o golpista faz. Me identifiquei com cada palavra. Texto necessário e corajoso.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #2ecc71;">MT</div>
-                    <span class="user-name">Marcos Teixeira</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #e74c3c;">AM</div>
+                        <span class="user-name">Ana Maria Silva</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 29 de novembro de 2025</p>
+                    <p class="comment-text">Incrível como o texto descreve exatamente o perfil de quem aplica golpes. Me senti acolhida e motivada.</p>
                 </div>
-                <span class="stars">★★★★☆</span>
-                <p class="comment-date">Avaliado em 25 de novembro de 2025</p>
-                <p class="comment-text">Muito bom o conteúdo. Me ajudou a entender que o tempo perdido é o que mais dói, mas a vingança psicológica traz um alívio real.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #9b59b6;">JL</div>
-                    <span class="user-name">Juliana L. Mota</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #2ecc71;">MT</div>
+                        <span class="user-name">Marcos Teixeira</span>
+                    </div>
+                    <span class="stars-display">★★★★☆</span>
+                    <p class="comment-date">Avaliado em 28 de novembro de 2025</p>
+                    <p class="comment-text">Muito bom o conteúdo. Me ajudou a entender que o tempo perdido é o que mais dói.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 22 de novembro de 2025</p>
-                <p class="comment-text">Sensacional. O capítulo sobre os psicopatas é cirúrgico. Eles realmente não se importam com ninguém, até que a luz é jogada sobre eles.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #f1c40f;">PR</div>
-                    <span class="user-name">Paulo Roberto Neves</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #9b59b6;">JL</div>
+                        <span class="user-name">Juliana L. Mota</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 27 de novembro de 2025</p>
+                    <p class="comment-text">Sensacional. O capítulo sobre psicopatas é real demais. Eles fingem chorar para nos manipular.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 20 de novembro de 2025</p>
-                <p class="comment-text">O melhor investimento que fiz este mês. Parar de sofrer em silêncio e agir estrategicamente mudou meu jogo. Recomendo a todos!</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #1abc9c;">FS</div>
-                    <span class="user-name">Fernanda Souza</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #f1c40f;">PR</div>
+                        <span class="user-name">Paulo Roberto Neves</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 26 de novembro de 2025</p>
+                    <p class="comment-text">O melhor investimento do ano. Agir com estratégia é muito melhor que no impulso.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 18 de novembro de 2025</p>
-                <p class="comment-text">A clareza do Passo 1 é essencial. Deixar a pessoa relaxar para depois aplicar a consequência... Isso é pura psicologia reversa. Perfeito.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #34495e;">CE</div>
-                    <span class="user-name">Carlos Eduardo G.</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #1abc9c;">FS</div>
+                        <span class="user-name">Fernanda Souza</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 25 de novembro de 2025</p>
+                    <p class="comment-text">A clareza do Passo 1 é essencial. Psicologia reversa pura aplicada à justiça.</p>
                 </div>
-                <span class="stars">★★★☆☆</span>
-                <p class="comment-date">Avaliado em 15 de novembro de 2025</p>
-                <p class="comment-text">Conteúdo forte, mexe muito com a gente. Achei algumas partes bem pesadas, mas entendo que para casos extremos de golpe não há outra saída.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #e67e22;">BO</div>
-                    <span class="user-name">Beatriz Oliveira</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #34495e;">CE</div>
+                        <span class="user-name">Carlos Eduardo G.</span>
+                    </div>
+                    <span class="stars-display">★★★☆☆</span>
+                    <p class="comment-date">Avaliado em 24 de novembro de 2025</p>
+                    <p class="comment-text">Texto forte. Tive que ler duas vezes para absorver a intensidade das reviravoltas.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 12 de novembro de 2025</p>
-                <p class="comment-text">As reviravoltas explicadas aqui são geniais. O golpista esquece, mas a gente não. O perdão só vem com o arrependimento, como diz o livro.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #d35400;">GS</div>
-                    <span class="user-name">Gabriel Santos</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #e67e22;">BO</div>
+                        <span class="user-name">Beatriz Oliveira</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 23 de novembro de 2025</p>
+                    <p class="comment-text">Perfeito. O golpista esquece rápido, mas a vítima tem memória infinita. Amei.</p>
                 </div>
-                <span class="stars">★★★★☆</span>
-                <p class="comment-date">Avaliado em 10 de novembro de 2025</p>
-                <p class="comment-text">A leitura é rápida e muito impactante. Me fez sentir menos culpado por querer justiça. O vínculo de dívida é real.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #7f8c8d;">LC</div>
-                    <span class="user-name">Luciana Costa</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #d35400;">GS</div>
+                        <span class="user-name">Gabriel Santos</span>
+                    </div>
+                    <span class="stars-display">★★★★☆</span>
+                    <p class="comment-date">Avaliado em 22 de novembro de 2025</p>
+                    <p class="comment-text">Leitura impactante. Me fez sentir menos culpado por querer que o golpista pague.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 05 de novembro de 2025</p>
-                <p class="comment-text">Obrigada por este manual. Eu estava perdida em depressão por causa de um golpe financeiro e agora recuperei meu espírito de luta.</p>
-            </div>
-
-            <div class="comment-item">
-                <div class="user-info">
-                    <div class="user-avatar" style="background: #c0392b;">AF</div>
-                    <span class="user-name">André Felipe</span>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #7f8c8d;">LC</div>
+                        <span class="user-name">Luciana Costa</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 21 de novembro de 2025</p>
+                    <p class="comment-text">Recuperei meu espírito de luta após ler sobre a dívida eterna que existe entre nós.</p>
                 </div>
-                <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado em 02 de novembro de 2025</p>
-                <p class="comment-text">Leitura obrigatória para quem foi enganado. A vingança organizada aqui é muito superior a qualquer reação impulsiva.</p>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #c0392b;">AF</div>
+                        <span class="user-name">André Felipe</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 20 de novembro de 2025</p>
+                    <p class="comment-text">Vingança organizada é o que diferencia o sábio do tolo. Manual excelente.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #16a085;">RN</div>
+                        <span class="user-name">Rafael Nunes</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 19 de novembro de 2025</p>
+                    <p class="comment-text">Muito bom o alerta sobre a família cúmplice. Eles também precisam arcar com os erros.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #27ae60;">SP</div>
+                        <span class="user-name">Simone Pereira</span>
+                    </div>
+                    <span class="stars-display">★★★★☆</span>
+                    <p class="comment-date">Avaliado em 18 de novembro de 2025</p>
+                    <p class="comment-text">O passo 5 sobre o perdão é muito verdadeiro. Só perdoo com arrependimento real.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #2980b9;">TA</div>
+                        <span class="user-name">Thiago Albuquerque</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 17 de novembro de 2025</p>
+                    <p class="comment-text">Finalmente alguém falou sobre o tempo e a dedicação roubados. Dinheiro a gente recupera.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #8e44ad;">VR</div>
+                        <span class="user-name">Vanessa Rodrigues</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 15 de novembro de 2025</p>
+                    <p class="comment-text">A lição final é libertadora. Parar de ignorar o vínculo é o primeiro passo para a cura.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #2c3e50;">FD</div>
+                        <span class="user-name">Felipe Diniz</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 12 de novembro de 2025</p>
+                    <p class="comment-text">Dossiê completo. O autor realmente entende a mente desses parasitas sociais.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #f39c12;">CL</div>
+                        <span class="user-name">Carina Lopes</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 10 de novembro de 2025</p>
+                    <p class="comment-text">Colocar o psicopata no holofote funciona mesmo. Eles odeiam a verdade nua e crua.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #d35400;">RF</div>
+                        <span class="user-name">Rodrigo Freitas</span>
+                    </div>
+                    <span class="stars-display">★★★★☆</span>
+                    <p class="comment-date">Avaliado em 08 de novembro de 2025</p>
+                    <p class="comment-text">Leitura necessária para quem trabalha com pessoas. Blindagem mental de primeira.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #c0392b;">AC</div>
+                        <span class="user-name">Amanda Coimbra</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 05 de novembro de 2025</p>
+                    <p class="comment-text">Obrigada por este manual. Ele tirou o peso da minha frustração e me deu um plano.</p>
+                </div>
+                <div class="comment-item" style="margin-top: 10px;">
+                    <div class="user-info">
+                        <div class="user-avatar" style="background: #7f8c8d;">BS</div>
+                        <span class="user-name">Bruno Silveira</span>
+                    </div>
+                    <span class="stars-display">★★★★★</span>
+                    <p class="comment-date">Avaliado em 02 de novembro de 2025</p>
+                    <p class="comment-text">A vingança alivia sim. Recomendo o livro para todos que foram lesados injustamente.</p>
+                </div>
             </div>
 
-            <div style="text-align: center; padding: 1rem; color: #007185; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
-                Mostrar mais 163 avaliações...
+            <div style="text-align: center; padding: 1.5rem; color: #007185; cursor: pointer; font-size: 0.85rem; font-weight: 600;">
+                Carregar mais 154 avaliações...
             </div>
         </aside>
     </div>
@@ -542,6 +654,22 @@
         let currentLocation = 1;
         let numOfPapers = 8;
         let maxLocation = numOfPapers + 1;
+
+        const starSelector = document.getElementById('starSelector');
+        const stars = starSelector.querySelectorAll('span');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                stars.forEach(s => {
+                    if(parseInt(s.getAttribute('data-value')) <= value) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
 
         function openBook() {
             book.style.transform = "translateX(50%)";
