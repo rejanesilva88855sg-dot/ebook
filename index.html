@@ -13,7 +13,7 @@
             --text-color: #000000;
             --accent-color: #cc0000; 
             --gold-color: #d4af37;
-            --bg-page: #ffffff; /* Fundo branco solicitado */
+            --bg-page: #ffffff;
             --header-bg: #ffffff;
             --sidebar-bg: #f9f9f9;
             --page-speed: 1.2s;
@@ -34,7 +34,6 @@
             flex-direction: column;
         }
 
-        /* Header Estilo Hotmart */
         header {
             width: 100%;
             height: 70px;
@@ -52,7 +51,6 @@
             object-fit: contain;
         }
 
-        /* Layout Principal */
         .main-container {
             display: flex;
             flex: 1;
@@ -60,7 +58,6 @@
             position: relative;
         }
 
-        /* Área do Livro */
         .book-area {
             flex: 1;
             display: flex;
@@ -80,21 +77,24 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
 
-        /* Sidebar de Comentários Estilo Amazon/Hotmart */
         .sidebar-reviews {
-            width: 400px;
+            width: 420px;
             background: var(--sidebar-bg);
             border-left: 1px solid #ddd;
             overflow-y: auto;
             padding: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .reviews-header {
             border-bottom: 2px solid #eee;
             padding-bottom: 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--sidebar-bg);
+            z-index: 10;
         }
 
         .reviews-header h2 {
@@ -113,7 +113,6 @@
         .stars { color: #ffa41c; font-size: 1.1rem; }
         .count { color: #565959; font-size: 0.9rem; }
 
-        /* Lista de Comentários */
         .comment-item {
             background: #fff;
             padding: 1.2rem;
@@ -132,32 +131,30 @@
         .user-avatar {
             width: 34px;
             height: 34px;
-            background: #ddd;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
             font-size: 0.8rem;
-            color: #666;
+            color: #fff;
         }
 
         .user-name { font-weight: 600; font-size: 0.95rem; color: #111; }
         .comment-date { font-size: 0.8rem; color: #565959; margin: 0.3rem 0; }
         .comment-text { font-size: 0.9rem; line-height: 1.5; color: #333; }
 
-        /* Formulário de Comentário */
         .comment-form {
             background: #fff;
             padding: 1.5rem;
             border-radius: 8px;
-            border: 2px dashed #ddd;
+            border: 1px solid #ddd;
             margin-bottom: 1rem;
         }
 
         .comment-form textarea {
             width: 100%;
-            height: 80px;
+            height: 60px;
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 10px;
@@ -175,9 +172,9 @@
             margin-top: 10px;
             cursor: pointer;
             font-weight: 500;
+            width: 100%;
         }
 
-        /* Lógica das Páginas do Livro */
         .page {
             position: absolute;
             width: 100%;
@@ -207,7 +204,6 @@
         .back { transform: rotateY(180deg); background: #fdfdfd; box-shadow: inset -20px 0 50px rgba(0,0,0,0.05); }
         .page.flipped { transform: rotateY(-180deg); z-index: 2; }
 
-        /* Estilos de Conteúdo do Livro */
         .cover-black {
             background: #000000 !important;
             color: var(--gold-color) !important;
@@ -225,7 +221,6 @@
         .img-box { width: 100%; height: 200px; margin-bottom: 1.5rem; border: 1px solid #ddd; overflow: hidden; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
 
-        /* Navegação do Livro */
         .book-nav {
             position: absolute;
             bottom: 30px;
@@ -255,7 +250,7 @@
         #p7 { z-index: 4; }
         #p8 { z-index: 3; }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1100px) {
             .sidebar-reviews { display: none; }
         }
     </style>
@@ -268,11 +263,9 @@
 
     <div class="main-container">
         
-        <!-- Área Central do E-book -->
         <main class="book-area">
             <div class="book" id="book">
                 
-                <!-- Capa -->
                 <div class="page" id="p1">
                     <div class="page-side front cover-black">
                         <span style="font-size: 2.5rem;">✠</span>
@@ -291,7 +284,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 1 -->
                 <div class="page" id="p2">
                     <div class="page-side front">
                         <span class="step-header">Passo 1</span>
@@ -308,7 +300,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 2 -->
                 <div class="page" id="p3">
                     <div class="page-side front">
                         <span class="step-header">Passo 2</span>
@@ -325,7 +316,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 3 -->
                 <div class="page" id="p4">
                     <div class="page-side front">
                         <span class="step-header">Passo 3</span>
@@ -341,7 +331,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 4 -->
                 <div class="page" id="p5">
                     <div class="page-side front">
                         <span class="step-header">Passo 4</span>
@@ -357,7 +346,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 5 -->
                 <div class="page" id="p6">
                     <div class="page-side front">
                         <span class="step-header">Passo 5</span>
@@ -373,7 +361,6 @@
                     </div>
                 </div>
 
-                <!-- Conclusão -->
                 <div class="page" id="p7">
                     <div class="page-side front">
                         <h2 class="main-title">Lição Final</h2>
@@ -390,7 +377,6 @@
                     </div>
                 </div>
 
-                <!-- Contra-Capa -->
                 <div class="page" id="p8">
                     <div class="page-side front cover-black">
                         <h1>FIM</h1>
@@ -409,74 +395,135 @@
             </div>
         </main>
 
-        <!-- Sidebar de Comentários -->
         <aside class="sidebar-reviews">
             <div class="reviews-header">
-                <h2>Avaliações</h2>
+                <h2>Avaliações Clientes</h2>
                 <div class="rating-summary">
                     <span class="stars">★★★★★</span>
-                    <span style="font-weight: 600;">4.9 de 5</span>
+                    <span style="font-weight: 600; color: #111;">4.9 de 5</span>
                 </div>
                 <div class="count">174 classificações globais</div>
             </div>
 
             <div class="comment-form">
-                <p style="font-size: 0.85rem; font-weight: 600;">O que você achou deste livro?</p>
-                <textarea placeholder="Escreva sua experiência aqui..."></textarea>
-                <button>Publicar Comentário</button>
+                <p style="font-size: 0.8rem; font-weight: 600; color: #555;">Deixe sua opinião sobre este manual:</p>
+                <textarea placeholder="Compartilhe como este e-book te ajudou..."></textarea>
+                <button>Enviar Avaliação</button>
             </div>
 
-            <!-- Comentários Fakes Realistas -->
             <div class="comment-item">
                 <div class="user-info">
-                    <div class="user-avatar" style="background: #ffdbdb;">RC</div>
+                    <div class="user-avatar" style="background: #3498db;">RC</div>
                     <span class="user-name">Ricardo Cavalcante</span>
                 </div>
                 <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado no Brasil em 14 de dezembro de 2024</p>
-                <p class="comment-text">Conteúdo cirúrgico. Eu estava me sentindo impotente após um golpe e esse guia me deu a clareza mental que eu precisava. A parte do Passo 2 é genial.</p>
+                <p class="comment-date">Avaliado em 30 de novembro de 2025</p>
+                <p class="comment-text">Este e-book abriu meus olhos. O Passo 2 sobre o cerco internacional é assustadoramente eficaz. Finalmente sinto que a justiça está sendo feita.</p>
             </div>
 
             <div class="comment-item">
                 <div class="user-info">
-                    <div class="user-avatar" style="background: #dbf3ff;">AM</div>
+                    <div class="user-avatar" style="background: #e74c3c;">AM</div>
                     <span class="user-name">Ana Maria Silva</span>
                 </div>
                 <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado no Brasil em 08 de dezembro de 2024</p>
-                <p class="comment-text">Incrível como o texto descreve exatamente o comportamento desses psicopatas. Eles realmente tentam inverter a culpa. Recomendo a leitura!</p>
+                <p class="comment-date">Avaliado em 28 de novembro de 2025</p>
+                <p class="comment-text">Impressionante como o autor descreve a inversão de culpa que o golpista faz. Me identifiquei com cada palavra. Texto necessário e corajoso.</p>
             </div>
 
             <div class="comment-item">
                 <div class="user-info">
-                    <div class="user-avatar" style="background: #e1ffdb;">MT</div>
+                    <div class="user-avatar" style="background: #2ecc71;">MT</div>
                     <span class="user-name">Marcos Teixeira</span>
                 </div>
                 <span class="stars">★★★★☆</span>
-                <p class="comment-date">Avaliado no Brasil em 30 de novembro de 2024</p>
-                <p class="comment-text">Muito bom, direto ao ponto. Me ajudou a entender que não devo carregar o estresse sozinho e que as consequências são apenas o retorno do que foi plantado.</p>
+                <p class="comment-date">Avaliado em 25 de novembro de 2025</p>
+                <p class="comment-text">Muito bom o conteúdo. Me ajudou a entender que o tempo perdido é o que mais dói, mas a vingança psicológica traz um alívio real.</p>
             </div>
 
             <div class="comment-item">
                 <div class="user-info">
-                    <div class="user-avatar" style="background: #f1dbff;">JL</div>
-                    <span class="user-name">Juliana L.</span>
+                    <div class="user-avatar" style="background: #9b59b6;">JL</div>
+                    <span class="user-name">Juliana L. Mota</span>
                 </div>
                 <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado no Brasil em 15 de novembro de 2024</p>
-                <p class="comment-text">O autor entende muito de psicologia aplicada. O Passo 4 sobre o esquecimento do golpista é a mais pura verdade. Comprem sem medo.</p>
+                <p class="comment-date">Avaliado em 22 de novembro de 2025</p>
+                <p class="comment-text">Sensacional. O capítulo sobre os psicopatas é cirúrgico. Eles realmente não se importam com ninguém, até que a luz é jogada sobre eles.</p>
             </div>
 
             <div class="comment-item">
                 <div class="user-info">
-                    <div class="user-avatar" style="background: #fff7db;">PR</div>
-                    <span class="user-name">Paulo Roberto</span>
+                    <div class="user-avatar" style="background: #f1c40f;">PR</div>
+                    <span class="user-name">Paulo Roberto Neves</span>
                 </div>
                 <span class="stars">★★★★★</span>
-                <p class="comment-date">Avaliado no Brasil em 02 de novembro de 2024</p>
-                <p class="comment-text">Justiça é a palavra. O e-book me deu ferramentas para não ser mais enganado e como reagir à altura quando o diálogo não funciona.</p>
+                <p class="comment-date">Avaliado em 20 de novembro de 2025</p>
+                <p class="comment-text">O melhor investimento que fiz este mês. Parar de sofrer em silêncio e agir estrategicamente mudou meu jogo. Recomendo a todos!</p>
             </div>
 
+            <div class="comment-item">
+                <div class="user-info">
+                    <div class="user-avatar" style="background: #1abc9c;">FS</div>
+                    <span class="user-name">Fernanda Souza</span>
+                </div>
+                <span class="stars">★★★★★</span>
+                <p class="comment-date">Avaliado em 18 de novembro de 2025</p>
+                <p class="comment-text">A clareza do Passo 1 é essencial. Deixar a pessoa relaxar para depois aplicar a consequência... Isso é pura psicologia reversa. Perfeito.</p>
+            </div>
+
+            <div class="comment-item">
+                <div class="user-info">
+                    <div class="user-avatar" style="background: #34495e;">CE</div>
+                    <span class="user-name">Carlos Eduardo G.</span>
+                </div>
+                <span class="stars">★★★☆☆</span>
+                <p class="comment-date">Avaliado em 15 de novembro de 2025</p>
+                <p class="comment-text">Conteúdo forte, mexe muito com a gente. Achei algumas partes bem pesadas, mas entendo que para casos extremos de golpe não há outra saída.</p>
+            </div>
+
+            <div class="comment-item">
+                <div class="user-info">
+                    <div class="user-avatar" style="background: #e67e22;">BO</div>
+                    <span class="user-name">Beatriz Oliveira</span>
+                </div>
+                <span class="stars">★★★★★</span>
+                <p class="comment-date">Avaliado em 12 de novembro de 2025</p>
+                <p class="comment-text">As reviravoltas explicadas aqui são geniais. O golpista esquece, mas a gente não. O perdão só vem com o arrependimento, como diz o livro.</p>
+            </div>
+
+            <div class="comment-item">
+                <div class="user-info">
+                    <div class="user-avatar" style="background: #d35400;">GS</div>
+                    <span class="user-name">Gabriel Santos</span>
+                </div>
+                <span class="stars">★★★★☆</span>
+                <p class="comment-date">Avaliado em 10 de novembro de 2025</p>
+                <p class="comment-text">A leitura é rápida e muito impactante. Me fez sentir menos culpado por querer justiça. O vínculo de dívida é real.</p>
+            </div>
+
+            <div class="comment-item">
+                <div class="user-info">
+                    <div class="user-avatar" style="background: #7f8c8d;">LC</div>
+                    <span class="user-name">Luciana Costa</span>
+                </div>
+                <span class="stars">★★★★★</span>
+                <p class="comment-date">Avaliado em 05 de novembro de 2025</p>
+                <p class="comment-text">Obrigada por este manual. Eu estava perdida em depressão por causa de um golpe financeiro e agora recuperei meu espírito de luta.</p>
+            </div>
+
+            <div class="comment-item">
+                <div class="user-info">
+                    <div class="user-avatar" style="background: #c0392b;">AF</div>
+                    <span class="user-name">André Felipe</span>
+                </div>
+                <span class="stars">★★★★★</span>
+                <p class="comment-date">Avaliado em 02 de novembro de 2025</p>
+                <p class="comment-text">Leitura obrigatória para quem foi enganado. A vingança organizada aqui é muito superior a qualquer reação impulsiva.</p>
+            </div>
+
+            <div style="text-align: center; padding: 1rem; color: #007185; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
+                Mostrar mais 163 avaliações...
+            </div>
         </aside>
     </div>
 
