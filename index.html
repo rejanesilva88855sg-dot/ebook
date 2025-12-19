@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>As Consequências e Reviravoltas de um Golpe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --book-height: 90vh; /* Livro bem grande */
+            --book-width: 60vh;
+            --paper-color: #ffffff; /* Branco puro para contraste máximo */
+            --text-color: #000000;  /* Preto puro para leitura clara */
+            --accent-color: #cc0000; 
+            --gold-color: #d4af37;
+            --bg-color: #050505;
+            --page-speed: 1.2s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Lora', serif;
+            perspective: 3000px;
+        }
+
+        /* Ambient Lighting */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .book {
+            position: relative;
+            width: var(--book-width);
+            height: var(--book-height);
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transition: transform var(--page-speed) cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .page-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 3.5rem 3rem;
+            backface-visibility: hidden;
+            background: var(--paper-color);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            border-left: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Sombras para dar profundidade de livro */
+        .front {
+            box-shadow: inset 20px 0 50px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            background: #fdfdfd;
+            box-shadow: inset -20px 0 50px rgba(0,0,0,0.05);
+        }
+
+        .page.flipped {
+            transform: rotateY(-180deg);
+            z-index: 2;
+        }
+
+        /* Tipografia Corrigida para Visibilidade Máxima */
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: #000;
+            line-height: 1.2;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .step-header {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            letter-spacing: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .main-title {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px double #000;
+            padding-bottom: 1rem;
+        }
+
+        .content-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #000000; /* Texto sem transparência */
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-body strong {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Capas (Pretas e Sólidas) */
+        .cover-black {
+            background: #000000 !important;
+            color: var(--gold-color) !important;
+            justify-content: center !important;
+            border-left: 15px solid #111;
+            padding: 4rem;
+            box-shadow: inset 0 0 100px rgba(212, 175, 55, 0.1) !important;
+        }
+
+        .cover-black h1 {
+            color: var(--gold-color);
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cover-black .author {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            margin-top: 3rem;
+            border-top: 1px solid var(--gold-color);
+            padding-top: 1rem;
+        }
+
+        /* Imagens (Preto e Branco para Estilo Avançado) */
+        .img-container {
+            width: 100%;
+            height: 250px;
+            margin-bottom: 2rem;
+            background: #eee;
+            border: 1px solid #000;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        /* Navegação */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            display: flex;
+            gap: 20px;
+            z-index: 9999;
+        }
+
+        .nav-btn {
+            background: #111;
+            border: 1px solid var(--gold-color);
+            color: var(--gold-color);
+            padding: 15px 40px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--gold-color);
+            color: #000;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.1;
+            cursor: not-allowed;
+        }
+
+        /* Hierarquia de Camadas */
+        #p1 { z-index: 10; }
+        #p2 { z-index: 9; }
+        #p3 { z-index: 8; }
+        #p4 { z-index: 7; }
+        #p5 { z-index: 6; }
+        #p6 { z-index: 5; }
+        #p7 { z-index: 4; }
+        #p8 { z-index: 3; }
+
+        /* Esconder scrollbar mantendo funcionalidade */
+        .page-side::-webkit-scrollbar { width: 0; }
+
+        @media (max-width: 600px) {
+            :root {
+                --book-width: 90vw;
+                --book-height: 80vh;
+            }
+            .cover-black h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book" id="book">
+        
+        <!-- Capa 1 -->
+        <div class="page" id="p1">
+            <div class="page-side front cover-black">
+                <span style="font-size: 3rem;">✦</span>
+                <h1>As Consequências e Reviravoltas de um Golpe!</h1>
+                <div style="height: 2px; width: 60%; background: var(--gold-color); margin: 2rem auto;"></div>
+                <p class="author">O MANUAL DA JUSTIÇA</p>
+            </div>
+            <div class="page-side back">
+                <span class="step-header">Introdução</span>
+                <h2 class="main-title">A Arte da Revanche</h2>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800" alt="Justiça">
+                </div>
+                <div class="content-body">
+                    Manual de como se vingar de uma golpista:<br><br>
+                    Este documento detalha as estratégias psicológicas e práticas para lidar com aqueles que usam da má fé para prejudicar terceiros. <strong>O vínculo entre golpista e vítima é uma dívida que o tempo não apaga sozinho.</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Passo 1 -->
+        <div class="page" id="p2">
+            <div class="page-side front">
+                <span class="step-header">Passo 1</span>
+                <h2 class="main-title">A Ilusão do Controle</h2>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800" alt="Paz Falsa">
+                </div>
+                <div class="content-body">
+                    Primeiro, deixe ela achar que está no controle da vida dela. Faça a golpista achar que os crimes que ela cometeu ficaram impunes e que nada vai acontecer nem com ela nem com a família dela, que foi cúmplice dos golpes dela.
+                </div>
+            </div>
+            <div class="page-side back">
+                <div class="content-body">
+                    Deixe a golpista acreditar que os golpes dela não terão consequências e deixe ela pensar que tudo acabou caso a pessoa enganada tenha se vingado antes e tenha parado de se vingar por estresse.<br><br>
+                    Fazendo a golpista acreditar que está no controle, a golpista simplesmente ficará relaxada e vai ficar com o psicológico limpo, achando que a vida dela só tem os problemas que ela enxerga e não os problemas das consequências dos seus crimes.
+                </div>
+            </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="page" id="p3">
+            <div class="page-side front">
+                <span class="step-header">Passo 2</span>
+                <h2 class="main-title">O Cerco Invisível</h2>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800" alt="Monitoramento">
+                </div>
+                <div class="content-body">
+                    Deixe a golpista seguir a vida dela curtindo, fazendo planos, rindo, e no final você, que foi prejudicado por ela, vem com tudo e de uma vez só, fazendo um grande estrago que ela não vai ter nem como consertar.
+                </div>
+            </div>
+            <div class="page-side back">
+                <h3 style="margin-bottom: 1.5rem;">Como se vingar:</h3>
+                <div class="content-body">
+                    Faça a golpista ser vista por todos ao seu redor, chame a atenção de todos ao redor da golpista, menos a atenção dela; deixe todos de olho nela, mas não deixe ela saber.<br><br>
+                    Autoridades, presidentes americanos, <strong>Interpol, CIA</strong>, e deixe que ela só saiba disso quando você quiser ver ela chorar. Faça dívidas no nome dela em outros países, faça ela ser procurada na China, Coreia, África, Afeganistão, Ucrânia, Rússia.
+                </div>
+            </div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="page" id="p4">
+            <div class="page-side front">
+                <span class="step-header">Passo 3</span>
+                <h2 class="main-title">O Abalo Psicopata</h2>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1455156218388-5e61b526818b?auto=format&fit=crop&q=80&w=800" alt="Sombra">
+                </div>
+                <div class="content-body">
+                    Geralmente, psicopatas não têm sentimentos e só se importam com eles mesmos e com a família. Muitos deles nem se importam com a família; tem muitos psicopatas que fazem coisas erradas e, quando a família é atacada, eles simplesmente ignoram e deixam suas famílias arcarem com as consequências de seus erros.
+                </div>
+            </div>
+            <div class="page-side back">
+                <div class="content-body">
+                    Então não tem muito o que fazer para abalar um psicopata; o que pode ser feito é fazer de tudo para colocar esse psicopata(a) em holofotes, chamar a atenção de amigos, parentes e alertar que o psicopata(a) não é uma vítima, e sim uma pessoa doente que manipula, engana, finge chorar...<br><br>
+                    ...brinca com os sentimentos de outras pessoas apenas para seu bem e para ter vantagens, finge que não fez nada de errado, finge que é vítima de histórias das quais o psicopata(a) é vilão.
+                </div>
+            </div>
+        </div>
+
+        <!-- Passo 4 - Parte 1 -->
+        <div class="page" id="p5">
+            <div class="page-side front">
+                <span class="step-header">Passo 4</span>
+                <h2 class="main-title">O Pensamento do Réu</h2>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?auto=format&fit=crop&q=80&w=800" alt="Mãos">
+                </div>
+                <div class="content-body">
+                    Golpistas não se importam com ninguém. Eles roubam pessoas, não pensam nos sentimentos delas de frustração, bloqueiam as pessoas por meio de contatos, WhatsApp, e-mails, Instagram, redes sociais, tentando cortar todos os contatos com as vítimas.
+                </div>
+            </div>
+            <div class="page-side back">
+                <div class="content-body">
+                    Mas uma coisa que os golpistas não pensam é que as vítimas nunca, em suas vidas, conseguiram esquecer da cara do golpista que as roubou. O golpista(a) é sempre o primeiro a esquecer do que fez, mas a vítima não se esquece. <strong>A vítima fica calada, a vítima faz planos, a vítima se vinga.</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Passo 4 - Parte 2 -->
+        <div class="page" id="p6">
+            <div class="page-side front">
+                <h2 class="main-title">A Inversão da Culpa</h2>
+                <div class="content-body">
+                    E quando a vítima se vinga, a primeira coisa que o golpista faz é se fingir de vítima e dizer que a pessoa que ele roubou é um monstro. O golpista vê a vítima se vingando e começa a mentir para si mesmo que a vítima é um monstro apenas por estar recebendo as consequências de seus golpes.
+                </div>
+            </div>
+            <div class="page-side back">
+                <div class="content-body">
+                    A vingança alivia a dor. Tira um pouco do sentimento de impotência por ter sido usado e prejudicado pelo tempo perdido enquanto o golpista só visava lucrar. Se a golpista não resolve com a vítima, tem casos em que a vítima se vinga para sempre, já que a dívida passa a existir entre ambas para sempre.
+                </div>
+            </div>
+        </div>
+
+        <!-- Passo 5 -->
+        <div class="page" id="p7">
+            <div class="page-side front">
+                <span class="step-header">Passo 5</span>
+                <h2 class="main-title">O Momento do Perdão</h2>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&q=80&w=800" alt="Luz">
+                </div>
+                <div class="content-body">
+                    Somente perdoe quando o golpista tomar vergonha na cara, se arrepender por ter roubado e pedir desculpas. Quando esse dia chegar, ambos seguirão suas vidas. Mas enquanto esse dia não chegar, o golpista(a) deveria continuar colhendo as consequências de tudo o que fez.
+                </div>
+            </div>
+            <div class="page-side back">
+                <div class="content-body">
+                    O golpista roubou muito mais que dinheiro: roubou tempo e dedicação. O golpista se esquece que a vítima tentou de tudo para não ter que recorrer à vingança. Tentou resolver de forma amigável antes de seguir o único caminho que lhe restava.
+                </div>
+            </div>
+        </div>
+
+        <!-- Finalização -->
+        <div class="page" id="p8">
+            <div class="page-side front">
+                <h2 class="main-title">Conclusão Final</h2>
+                <div class="content-body">
+                    Aprendam com este e-book as consequências que um golpista pode sofrer. Nem todo mundo é besta de deixar uma pessoa roubar, rir, manipular e não fazer nada. Pessoas sofrem, pessoas se vingam. <strong>A mesma dor que um golpista pode infligir, a outra pessoa pode rebater.</strong>
+                </div>
+                <div style="background: #000; color: #fff; padding: 1rem; font-size: 0.9rem; text-align: center;">
+                    "Pedir desculpas é importante e libertador."
+                </div>
+            </div>
+            <div class="page-side back cover-black">
+                <h2>FIM DO DOSSIÊ</h2>
+                <div style="height: 1px; width: 40%; background: var(--gold-color); margin: 2rem auto;"></div>
+                <p style="font-size: 0.8rem; font-style: italic;">"A justiça tarda, mas não falha para quem sabe esperar."</p>
+                <p style="margin-top: 2rem; font-size: 0.6rem; opacity: 0.5;">TODOS OS DIREITOS RESERVADOS</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="nav-controls">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próxima</button>
+    </div>
+
+    <script>
+        const prevBtn = document.querySelector("#prevBtn");
+        const nextBtn = document.querySelector("#nextBtn");
+        const book = document.querySelector("#book");
+
+        const pages = [
+            document.querySelector("#p1"),
+            document.querySelector("#p2"),
+            document.querySelector("#p3"),
+            document.querySelector("#p4"),
+            document.querySelector("#p5"),
+            document.querySelector("#p6"),
+            document.querySelector("#p7"),
+            document.querySelector("#p8")
+        ];
+
+        let currentLocation = 1;
+        let numOfPapers = 8;
+        let maxLocation = numOfPapers + 1;
+
+        function openBook() {
+            book.style.transform = "translateX(50%)";
+            prevBtn.disabled = false;
+        }
+
+        function closeBook(isAtBeginning) {
+            if(isAtBeginning) {
+                book.style.transform = "translateX(0%)";
+            } else {
+                book.style.transform = "translateX(100%)";
+            }
+        }
+
+        function goNextPage() {
+            if(currentLocation < maxLocation) {
+                switch(currentLocation) {
+                    case 1:
+                        openBook();
+                        pages[0].classList.add("flipped");
+                        pages[0].style.zIndex = 1;
+                        break;
+                    case 2:
+                        pages[1].classList.add("flipped");
+                        pages[1].style.zIndex = 2;
+                        break;
+                    case 3:
+                        pages[2].classList.add("flipped");
+                        pages[2].style.zIndex = 3;
+                        break;
+                    case 4:
+                        pages[3].classList.add("flipped");
+                        pages[3].style.zIndex = 4;
+                        break;
+                    case 5:
+                        pages[4].classList.add("flipped");
+                        pages[4].style.zIndex = 5;
+                        break;
+                    case 6:
+                        pages[5].classList.add("flipped");
+                        pages[5].style.zIndex = 6;
+                        break;
+                    case 7:
+                        pages[6].classList.add("flipped");
+                        pages[6].style.zIndex = 7;
+                        break;
+                    case 8:
+                        pages[7].classList.add("flipped");
+                        pages[7].style.zIndex = 8;
+                        closeBook(false);
+                        nextBtn.disabled = true;
+                        break;
+                }
+                currentLocation++;
+            }
+        }
+
+        function goPrevPage() {
+            if(currentLocation > 1) {
+                switch(currentLocation) {
+                    case 2:
+                        closeBook(true);
+                        pages[0].classList.remove("flipped");
+                        pages[0].style.zIndex = 10;
+                        prevBtn.disabled = true;
+                        break;
+                    case 3:
+                        pages[1].classList.remove("flipped");
+                        pages[1].style.zIndex = 9;
+                        break;
+                    case 4:
+                        pages[2].classList.remove("flipped");
+                        pages[2].style.zIndex = 8;
+                        break;
+                    case 5:
+                        pages[3].classList.remove("flipped");
+                        pages[3].style.zIndex = 7;
+                        break;
+                    case 6:
+                        pages[4].classList.remove("flipped");
+                        pages[4].style.zIndex = 6;
+                        break;
+                    case 7:
+                        pages[5].classList.remove("flipped");
+                        pages[5].style.zIndex = 5;
+                        break;
+                    case 8:
+                        pages[6].classList.remove("flipped");
+                        pages[6].style.zIndex = 4;
+                        nextBtn.disabled = false;
+                        break;
+                    case 9:
+                        openBook();
+                        pages[7].classList.remove("flipped");
+                        pages[7].style.zIndex = 3;
+                        nextBtn.disabled = false;
+                        break;
+                }
+                currentLocation--;
+            }
+        }
+
+        nextBtn.addEventListener("click", goNextPage);
+        prevBtn.addEventListener("click", goPrevPage);
+
+        // Click on pages
+        pages.forEach((page, index) => {
+            page.addEventListener("click", () => {
+                if(page.classList.contains("flipped")) {
+                    if(currentLocation - 1 === index + 1) goPrevPage();
+                } else {
+                    if(currentLocation === index + 1) goNextPage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
